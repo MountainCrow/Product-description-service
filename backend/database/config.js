@@ -17,7 +17,7 @@ module.exports = () => {
     color: String,
     description: String,
     gender: String,
-    rating: Number
+    userRating: Number
   });
 
   const Product = mongoose.model('Product', productSchema);
