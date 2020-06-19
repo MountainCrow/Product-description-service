@@ -5,15 +5,26 @@ const bodyParser = require('body-parser');
 const path = require('path');
 
 const app = express();
+const db = require('../database/config.js');
+
+const sample = require('../database/sample_data.js')
 
 app.use(cors());
 app.use(morgan('dev'));
 
 app.use(express.static(path.join(__dirname, '../../client/dist')));
 
-app.get('/', (req, res) => {
-  res.sendStatus(200)
-})
+db.build(sample.data)
+// .then(data => console.log(data))
+
+// app.get('/', (req, res) => {
+//   db.build(sample.data, callback)
+//   .then(data => {
+//     console.log(data)
+//     res.json(data);
+//   })
+// })
+
 
 /*app.post('/', (req, res) => {
     console.log("POST is working...")
