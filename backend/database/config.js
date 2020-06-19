@@ -23,12 +23,14 @@ let productSchema = new mongoose.Schema({
 
 let Product = mongoose.model("Product", productSchema);
 
+//--------------------------------------------------------------------
+//Populates database with mock data - un-comment module.exports below
 // let build = (data, callback) => {
 //   console.log(data[0].name);
 //   var collection = [];
 //   var count = 1;
 //   data.forEach(function(data) {
-
+//
 //     var newProduct = new Product({
 //       productId: count,
 //       name: data.name,
@@ -43,8 +45,8 @@ let Product = mongoose.model("Product", productSchema);
 //     count = count + 1;
 //     collection.push(newProduct);
 //   })
-
-
+//
+//
 //   Product.insertMany(collection)
 //   .then((res) => {
 //     callback(null, res)
@@ -53,6 +55,7 @@ let Product = mongoose.model("Product", productSchema);
 //     callback(err, null)
 //   })
 // }
+//-------------------------------------------------------------------
 
 var getProducts = (callback) => {
 
