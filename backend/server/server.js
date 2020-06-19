@@ -14,16 +14,19 @@ app.use(morgan('dev'));
 
 app.use(express.static(path.join(__dirname, '../../client/dist')));
 
+/*use to populate db with mock data
 db.build(sample.data)
-// .then(data => console.log(data))
+.then(data => console.log(data))*/
 
-// app.get('/', (req, res) => {
-//   db.build(sample.data, callback)
-//   .then(data => {
-//     console.log(data)
-//     res.json(data);
-//   })
-// })
+app.get('/products', (req, res) => {
+  db.getProducts((err,data) => {
+    if (err) {
+      res.send(err)
+    } else {
+      res.json(data)
+    }
+  })
+})
 
 
 /*app.post('/', (req, res) => {

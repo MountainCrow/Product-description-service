@@ -54,9 +54,19 @@ let Product = mongoose.model("Product", productSchema);
 //   })
 // }
 
-var getProduct = () => {
-  
+var getProducts = (callback) => {
+
+  Product.find()
+  .limit(1) //set to one for now. Will refactor once components are built
+  .exec((err, data) => {
+    if (err) {
+      callback(err, null)
+    } else {
+      callback(null, data)
+    }
+  })
 }
 
-module.exports.build = build;
+// module.exports.build = build;
+module.exports.getProducts = getProducts;
 

@@ -12,8 +12,8 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/')
-    .then(data => console.log(data))
+    axios.get('/products')
+    .then(data => console.log(data.data))
     .catch(err => console.log(err))
   }
 
