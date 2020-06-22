@@ -25,9 +25,9 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "flickity": "^2.2.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-slick": "^0.26.1",
-    "slick-carousel": "^1.8.1"
+    "react-flickity-component": "^3.5.0"
   }
 }

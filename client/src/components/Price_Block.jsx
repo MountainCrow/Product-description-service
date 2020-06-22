@@ -1,7 +1,7 @@
 import React from 'react';
+import Size_Dropdown from './Size_Dropdown.jsx'
 
 var Price_Block = (props) => {
-  console.log(props.product.products[0].price);
   return(
     <div style={{backgroundColor: "#f4f4f4"}} float='right' >
       <h3>{props.product.products[0].name}</h3>
@@ -10,7 +10,7 @@ var Price_Block = (props) => {
       <h3>$110</h3>
       <p>{props.product.products[0].description}</p>
       <div>Color Component</div>
-      <div>Size component</div>
+      <div><Size_Dropdown /></div>
       <button>Add To Cart</button>
     </div>
   )
