@@ -1,25 +1,37 @@
 import React from 'react';
 import axios from 'axios';
+import Carousel from './Carousel.jsx';
+import Price_Block from'./Price_Block.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      products: []
-      //currentProduct: products.item
+      products: [{image: 'test'}],
+      // currentProduct: products[0]
     }
   }
 
   componentDidMount() {
     axios.get('/products')
-    .then(data => console.log(data.data))
+    .then(data => {
+      this.setState({
+        products: data.data
+        // currentProduct: products[0]
+      })
+
+    })
     .catch(err => console.log(err))
   }
 
   render() {
     return(
-      <h1>Hello World!!!</h1>
+      <div>
+        <Carousel product={this.state} />
+        <Price_Block product={this.state} />
+      </div>
+
     )
   }
 }
