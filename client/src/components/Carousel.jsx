@@ -1,6 +1,7 @@
 import React from 'react';
 import SliderThumb from './SliderThumb.jsx'
 import Flickity from 'react-flickity-component';
+import styled from 'styled-components'
 
 const flickityOptions = {
   initialIndex: 0,

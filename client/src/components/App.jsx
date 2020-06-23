@@ -8,8 +8,9 @@ class App extends React.Component {
     super(props)
 
     this.state = {
-      products: [{image: 'test'}],
-      // currentProduct: products[0]
+      isLoaded: false,
+      products: [],
+      currentProduct: null
     }
   }
 
@@ -17,22 +18,30 @@ class App extends React.Component {
     axios.get('/products')
     .then(data => {
       this.setState({
-        products: data.data
-        // currentProduct: products[0]
+        isLoaded: true,
+        products: data.data,
+        currentProduct: data.data[0]
       })
 
     })
     .catch(err => console.log(err))
   }
 
-  render() {
-    return(
-      <div>
-        <Carousel product={this.state} />
-        <Price_Block product={this.state} />
-      </div>
 
-    )
+
+  render() {
+    if (this.state.isLoaded === true) {
+      return(
+        <div >
+          <Carousel product={this.state} />
+          <Price_Block product={this.state} />
+        </div>
+      )
+    } else {
+      return(
+        null
+      )
+    }
   }
 }
 
