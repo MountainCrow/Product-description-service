@@ -1,7 +1,14 @@
 import React from 'react';
-import SliderThumb from './SliderThumb.jsx'
 import Flickity from 'react-flickity-component';
 import styled from 'styled-components'
+
+const StyledCarousel = styled.div.attrs(props => ({
+  className: 'carousel',
+}))`
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+`;
 
 const flickityOptions = {
   initialIndex: 0,
@@ -22,7 +29,7 @@ var Carousel = (props) => {
   console.log(props)
 
   return (
-    <div width='40%'>
+    <StyledCarousel>
       <Flickity
         className={'carousel'} // default ''
         elementType={'div'} // default 'div'
@@ -34,17 +41,11 @@ var Carousel = (props) => {
       >
         <img src={props.product.products[0].image}/>
         <img src="https://hrphxfec.s3-us-west-1.amazonaws.com/Kanken+Laptop+13/kanken_autumn1.webp"/>
+        <img src={props.product.products[0].image}/>
+        <img src="https://hrphxfec.s3-us-west-1.amazonaws.com/Kanken+Laptop+13/kanken_autumn1.webp"/>
       </Flickity>
-      <SliderThumb image={props.product.products[0].image} />
-    </div>
+    </StyledCarousel>
   )
-
-  // return(
-  //   <div>
-  //     <img id="slider" border='1px solid black' height='45%' width='45%' src={props.product.products[0].image}></img>
-  //     <SliderThumb image={props.product.products[0].image} />
-  //   </div>
-  // )
 }
 
 export default Carousel;
