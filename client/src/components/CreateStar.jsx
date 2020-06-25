@@ -3,17 +3,22 @@ import {FaStar} from 'react-icons/fa';
 import {FaStarHalf} from 'react-icons/fa';
 import styled from 'styled-components';
 
+<<<<<<< HEAD
 // const StyledStar = styled.div`
 //   color: ${props => {
 //     const type =
 //   }}
+=======
+const StyledStar = styled.div`
+  color: blue
+>>>>>>> Quick Save
 
 // `;
 
 var CreateStar = (props) => {
-  console.log(props)
+  console.log("SS: ", props)
   return(
-  <div style={{color: 'rgb(204, 22, 24)'}}>{<FaStar/>}{<FaStarHalf/>}</div>
+  <StyledStar></StyledStar>
   )
 }
 

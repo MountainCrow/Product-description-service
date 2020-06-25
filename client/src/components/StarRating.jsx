@@ -4,9 +4,14 @@ import styled from 'styled-components';
 
 var StarRating = (props) => {
 
+  const Result = () => {
+    for (let i = 0; i < props.data; i++) {
+      <CreateStar key={i} data={'FaStar'}/>
+    }
+  }
 
   return(
-    <CreateStar/>
+    <div>{Result}</div>
   )
 }
 
