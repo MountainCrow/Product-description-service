@@ -1,12 +1,19 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const StyledThumb = styled.img`
+  width: 50px;
+  height: 50px;
+  padding: 5px;
+  background: #e8e7e6;
+`;
 
 var SliderThumb = (props) => {
 
-  return(
-    <div >
-      <img border='1px black solid' margin='10px grey' padding='0px' width='40px' height="40px" id="slider-thumb" src={props.image}/>
-    </div>
+  console.log("SLIDER: ", props)
 
+  return(
+    <StyledThumb src={props.product.currentProduct.image}/>
   )
 }
 

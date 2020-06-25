@@ -1,5 +1,6 @@
 import React from 'react';
-import Size_Dropdown from './Size_Dropdown.jsx';
+import SizeMenu from './SizeMenu.jsx';
+import Colors from './Colors.jsx';
 import styled from 'styled-components';
 
 const PriceBlockWrapper = styled.div`
@@ -71,6 +72,12 @@ const ColorButtonWrapper = styled.div`
   text-size-adjust: 100%;
   width: 90%;
   padding-left: 5%;
+  padding-top: 25px;
+`;
+
+const StyledMenu = styled.div`
+  padding-top: 12px;
+  padding-bottom: 5px;
 `;
 
 const Button = styled.button`
@@ -94,28 +101,28 @@ const Button = styled.button`
   font-weight: 700;
   padding-left: 25px;
   padding-right: 25px;
-  paddtin-top: 12px;
+  padding-top: 12px;
   padding-bottom: 12px;
 `;
 
 var Price_Block = (props) => {
+  //will need to change currentproduct
   return(
     <PriceBlockWrapper>
       <ContentHeader>
-        <Heading>{props.product.products[0].name}</Heading>
-        <Gender>{props.product.products[0].gender}</Gender>
-        <ul className='stars-rating'>{props.product.products[0].userRating}</ul>
+        <Heading>{props.data.currentProduct.name}</Heading>
+        <Gender>{props.data.currentProduct.gender}</Gender>
+        <ul className='stars-rating'>{props.data.currentProduct.userRating}</ul>
         <Price>$110</Price>
       </ContentHeader>
-      <Description>{props.product.products[0].description}</Description>
+      <Description>{props.data.currentProduct.description}</Description>
       <ColorButtonWrapper>
-        <div className='colors'>Colors</div>
-        <div><Size_Dropdown /></div>
+        <Colors data={props.data.products}/>
+        <StyledMenu><SizeMenu /></StyledMenu>
         <Button>ADD TO CART</Button>
       </ColorButtonWrapper>
     </PriceBlockWrapper>
   )
 }
-
 
 export default Price_Block;

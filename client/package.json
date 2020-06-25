@@ -26,6 +26,8 @@
   "dependencies": {
     "axios": "^0.19.2",
     "flickity": "^2.2.1",
+    "flickity-fullscreen": "^1.1.1",
+    "flickity-imagesloaded": "^2.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-flickity-component": "^3.5.0",

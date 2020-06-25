@@ -34,24 +34,20 @@ class App extends React.Component {
         products: data.data,
         currentProduct: data.data[0]
       })
-
     })
     .catch(err => console.log(err))
   }
-
-
 
   render() {
     if (this.state.isLoaded === true) {
       return(
         <div>
           <Test>
-            <Carousel product={this.state} />
-            <Price_Block product={this.state} />
+            <Carousel data={this.state} />
+            <Price_Block data={this.state} />
           </Test>
           <SliderThumb product={this.state} />
         </div>
-
       )
     } else {
       return(
