@@ -1,6 +1,7 @@
 import React from 'react';
 import SizeMenu from './SizeMenu.jsx';
 import Colors from './Colors.jsx';
+import StarRating from './StarRating.jsx';
 import styled from 'styled-components';
 
 const PriceBlockWrapper = styled.div`
@@ -106,13 +107,13 @@ const Button = styled.button`
 `;
 
 var Price_Block = (props) => {
-  //will need to change currentproduct
+  console.log("PB: ", props)
   return(
     <PriceBlockWrapper>
       <ContentHeader>
-        <Heading>{props.data.currentProduct.name}</Heading>
-        <Gender>{props.data.currentProduct.gender}</Gender>
-        <ul className='stars-rating'>{props.data.currentProduct.userRating}</ul>
+        <Heading>{props.data.products[0].name}</Heading>
+        <Gender>{props.data.products[0].gender}</Gender>
+        <StarRating data={props.data.currentProduct}></StarRating>
         <Price>$110</Price>
       </ContentHeader>
       <Description>{props.data.currentProduct.description}</Description>
