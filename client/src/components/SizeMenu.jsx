@@ -3,7 +3,9 @@ import React from 'react';
 var SizeMenu = (props) => {
 
   return(
-    <textarea>One Size</textarea>
+    <form>
+      <input placeholder="One Size"></input>
+    </form>
   )
 }
 
