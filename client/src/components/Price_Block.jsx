@@ -119,7 +119,7 @@ var Price_Block = (props) => {
       <Description>{props.data.currentProduct.description}</Description>
       <ColorButtonWrapper>
         <Colors data={props.data.products}/>
-        <StyledMenu><SizeMenu /></StyledMenu>
+        <StyledMenu><SizeMenu data={props.data.currentProduct} /></StyledMenu>
         <Button>ADD TO CART</Button>
       </ColorButtonWrapper>
     </PriceBlockWrapper>
