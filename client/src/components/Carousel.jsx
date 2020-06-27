@@ -53,10 +53,7 @@ var Carousel = (props) => {
           static // default false
 
         >
-          <img src={props.data.products[0].image}/>
-          <img src="https://hrphxfec.s3-us-west-1.amazonaws.com/Kanken+Laptop+13/kanken_autumn1.webp"/>
-          <img src={props.data.products[0].image}/>
-          <img src="https://hrphxfec.s3-us-west-1.amazonaws.com/Kanken+Laptop+13/kanken_autumn1.webp"/>
+          <img src={props.data.currentProduct.image[0]}/>
         </Flickity>
       {/* </StyledPrevButton> */}
     </StyledCarousel>
