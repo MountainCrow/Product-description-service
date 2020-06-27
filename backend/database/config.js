@@ -19,7 +19,7 @@ let productSchema = new mongoose.Schema({
   price: Number,
   gender: String,
   style: String,
-  size: String,
+  size: [String],
   color: String,
   image: [String]
 })
@@ -38,6 +38,7 @@ let Product = mongoose.model("Product", productSchema);
 //       productId: count,
 //       name: data.name,
 //       type: data.type,
+//       price: data.price,
 //       description: data.description,
 //       rating: data.userRating,
 //       totalRatings: data.totalRatings,
@@ -51,7 +52,6 @@ let Product = mongoose.model("Product", productSchema);
 //     collection.push(newProduct);
 //   })
 
-
 //   Product.insertMany(collection)
 //   .then((res) => {
 //     callback(null, res)
@@ -63,6 +63,7 @@ let Product = mongoose.model("Product", productSchema);
 // -------------------------------------------------------------------
 
 var getProducts = (callback) => {
+
 
   Product.find()
   .limit() //set to one for now. Will refactor once components are built

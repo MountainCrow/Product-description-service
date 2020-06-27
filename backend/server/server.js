@@ -14,7 +14,7 @@ app.use(morgan('dev'));
 
 app.use(express.static(path.join(__dirname, '../../client/dist')));
 
-//use to populate db with mock data
+// use to populate db with mock data
 // db.build(sample.data, (err, data) => {
 //   if (err) {
 //     console.log(err)

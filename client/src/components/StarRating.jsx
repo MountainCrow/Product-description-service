@@ -17,9 +17,8 @@ const StyledTotal = styled.span`
 var StarRating = (props) => {
 
   const solidStar = Math.floor(props.data.rating)
-  console.log("solidStar:" , solidStar)
 
-  const hasHalfStar = false;
+  let hasHalfStar = false;
   if (solidStar < props.data.rating) {
     hasHalfStar = true;
   }
@@ -32,18 +31,19 @@ var StarRating = (props) => {
             return(
               <FaStar key={index} style={{color: '#cc1618'}}/>
             )
-          } else if (hasHalfStar && index < 5) {
+          } else if (index === solidStar && hasHalfStar === true && index < 5) {
+            hasHalfStar = false;
             return (
               <FaStarHalfAlt key={index} style={{color: '#cc1618'}}/>
             )
-          } else if (index < 5) {
+          } else if (index >= solidStar && hasHalfStar === false && index < 5) {
             return (
               <FaStar key={index} style={{color: '#959595'}}/>
             )
           }
         })}
       </label>
-      <StyledTotal>(6)</StyledTotal>
+      <StyledTotal>({props.data.totalRatings})</StyledTotal>
     </Wrapper>
   )
 }

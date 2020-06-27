@@ -53,7 +53,7 @@ var Carousel = (props) => {
           static // default false
 
         >
-          <img src={props.data.currentProduct.image[0]}/>
+          <img src={props.data.currentProduct.image[0]} style={{height: '600px', width: '100%'}}/>
         </Flickity>
       {/* </StyledPrevButton> */}
     </StyledCarousel>

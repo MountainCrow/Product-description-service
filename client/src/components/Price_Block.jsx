@@ -107,14 +107,14 @@ const Button = styled.button`
 `;
 
 var Price_Block = (props) => {
-  console.log("PB: ", props)
+  console.log("PB: ", props.data.currentProduct.price)
   return(
     <PriceBlockWrapper>
       <ContentHeader>
-        <Heading>{props.data.products[0].name}</Heading>
-        <Gender>{props.data.products[0].gender}</Gender>
+        <Heading>{props.data.currentProduct.name}</Heading>
+        <Gender>{props.data.currentProduct.gender} {props.data.currentProduct.style}</Gender>
         <StarRating data={props.data.currentProduct}></StarRating>
-        <Price>$110</Price>
+        <Price>${props.data.currentProduct.price}</Price>
       </ContentHeader>
       <Description>{props.data.currentProduct.description}</Description>
       <ColorButtonWrapper>
