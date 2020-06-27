@@ -49,7 +49,7 @@ class App extends React.Component {
   }
 
   render() {
-    if (this.state.isLoaded === true) {
+    if (this.state.isLoaded) {
       return(
         <div>
           <Test>

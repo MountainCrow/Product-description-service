@@ -13,7 +13,7 @@ var SliderThumb = (props) => {
   console.log("SLIDER: ", props)
 
   return(
-    <StyledThumb src={props.product.currentProduct.image}/>
+    <StyledThumb src={props.product.currentProduct.image[0]}/>
   )
 }
 

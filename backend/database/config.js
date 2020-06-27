@@ -13,12 +13,15 @@ let productSchema = new mongoose.Schema({
   productId: Number,
   name: String,
   type: String,
-  gender: String,
-  size: String,
   description: String,
-  color: String,
   rating: Number,
-  image: String
+  totalRatings: Number,
+  price: Number,
+  gender: String,
+  style: String,
+  size: String,
+  color: String,
+  image: [String]
 })
 
 let Product = mongoose.model("Product", productSchema);
@@ -30,23 +33,25 @@ let Product = mongoose.model("Product", productSchema);
 //   var collection = [];
 //   var count = 1;
 //   data.forEach(function(data) {
-//
+
 //     var newProduct = new Product({
 //       productId: count,
 //       name: data.name,
-//       type: 'bag',
-//       gender: 'Unisex',
-//       size: 'xl',
+//       type: data.type,
 //       description: data.description,
-//       color: 'acorn',
 //       rating: data.userRating,
-//       image: ''
+//       totalRatings: data.totalRatings,
+//       gender: data.gender,
+//       style: data.style,
+//       size: data.size,
+//       color: data.color,
+//       image: data.url
 //     })
 //     count = count + 1;
 //     collection.push(newProduct);
 //   })
-//
-//
+
+
 //   Product.insertMany(collection)
 //   .then((res) => {
 //     callback(null, res)
@@ -55,12 +60,12 @@ let Product = mongoose.model("Product", productSchema);
 //     callback(err, null)
 //   })
 // }
-//-------------------------------------------------------------------
+// -------------------------------------------------------------------
 
 var getProducts = (callback) => {
 
   Product.find()
-  .limit(17) //set to one for now. Will refactor once components are built
+  .limit() //set to one for now. Will refactor once components are built
   .exec((err, data) => {
     if (err) {
       callback(err, null)
