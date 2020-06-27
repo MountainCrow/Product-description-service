@@ -24,11 +24,14 @@ class App extends React.Component {
       products: [],
       currentProduct: null
     }
+
+    this.getCurrentProduct = this.getCurrentProduct.bind(this)
   }
 
   componentDidMount() {
     axios.get('/products')
     .then(data => {
+      console.log("GET: ", data)
       this.setState({
         isLoaded: true,
         products: data.data,
@@ -38,13 +41,20 @@ class App extends React.Component {
     .catch(err => console.log(err))
   }
 
+  getCurrentProduct(product) {
+    console.log(product)
+    this.setState({
+      currentProduct: product
+    })
+  }
+
   render() {
     if (this.state.isLoaded === true) {
       return(
         <div>
           <Test>
             <Carousel data={this.state} />
-            <Price_Block data={this.state} />
+            <Price_Block function={this.getCurrentProduct} data={this.state} />
           </Test>
           <SliderThumb product={this.state} />
         </div>

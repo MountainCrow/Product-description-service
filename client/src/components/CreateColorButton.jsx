@@ -90,7 +90,7 @@ var CreateColorButton = (props) => {
   const Color = props.item.color;
 
   return(
-      <Button data={Color}></Button>
+      <Button data={Color} onClick={() => props.function(props.item)}></Button>
   )
 }
 

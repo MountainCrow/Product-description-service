@@ -60,7 +60,7 @@ let Product = mongoose.model("Product", productSchema);
 var getProducts = (callback) => {
 
   Product.find()
-  .limit(3) //set to one for now. Will refactor once components are built
+  .limit(17) //set to one for now. Will refactor once components are built
   .exec((err, data) => {
     if (err) {
       callback(err, null)
