@@ -4,7 +4,6 @@ import styled from 'styled-components';
 const Button = styled.button`
   background: ${props => {
     const color = props.data;
-    console.log("COLORIZED", color)
     if (color === '215 - Autumn Leaf') {
       return 'rgb(171, 84, 26)'
     } else if (color === '662 - Deep Forest') {
@@ -116,7 +115,7 @@ var CreateColorButton = (props) => {
   const Color = props.item.color;
 
   return(
-      <Button data={Color} onClick={() => props.function(props.item)}></Button>
+      <Button data={Color} onClick={() => props.getCurrentProduct(props.item)}></Button>
   )
 }
 

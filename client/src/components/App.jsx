@@ -22,10 +22,12 @@ class App extends React.Component {
     this.state = {
       isLoaded: false,
       products: [],
-      currentProduct: null
+      currentProduct: null,
+      totalPrice: 0
     }
 
     this.getCurrentProduct = this.getCurrentProduct.bind(this)
+    this.addToCart = this.addToCart.bind(this)
   }
 
   componentDidMount() {
@@ -48,13 +50,19 @@ class App extends React.Component {
     })
   }
 
+  addToCart(newTotal) {
+    this.setState({
+      totalPrice: this.state.totalPrice + newTotal
+    }, () => {console.log("totalPrice: ", this.state.totalPrice)})
+  }
+
   render() {
     if (this.state.isLoaded) {
       return(
         <div>
           <Test>
             <Carousel data={this.state} />
-            <Price_Block function={this.getCurrentProduct} data={this.state} />
+            <Price_Block addToCart={this.addToCart} getCurrentProduct={this.getCurrentProduct} data={this.state} />
           </Test>
           <SliderThumb product={this.state} />
         </div>

@@ -11,10 +11,8 @@ const StyledButton = styled.div`
 
 var Colors = (props) => {
 
-  console.log("COLORS: ", props)
-
   const ColorButton = props.data.products.map((item, index) => (
-    <CreateColorButton key={index} item={item} function={props.function} />
+    <CreateColorButton key={index} item={item} getCurrentProduct={props.getCurrentProduct} />
   ))
 
   return(

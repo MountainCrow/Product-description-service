@@ -14,13 +14,13 @@ const StyledMenu = styled.select`
 
 var SizeMenu = (props) => {
 
-  console.log("SIZE: ", props)
+  const ItemSize = props.data.size.map((item, index) => (
+    <option key={index}>{item}</option>
+  ))
 
   return(
     <Wrapper>
-      <StyledMenu>
-        <option value={props.data.size}>{props.data.size}</option>
-      </StyledMenu>
+      <StyledMenu>{ItemSize}</StyledMenu>
     </Wrapper>
   )
 
