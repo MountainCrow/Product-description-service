@@ -1,5 +1,4 @@
 import React from 'react';
-import ImageCell from './ImageCell.jsx';
 import Flickity from 'react-flickity-component';
 import styled from 'styled-components'
 

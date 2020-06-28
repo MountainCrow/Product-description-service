@@ -62,7 +62,7 @@ class App extends React.Component {
         <div>
           <Test>
             <Carousel data={this.state} />
-            <Price_Block addToCart={this.addToCart} getCurrentProduct={this.getCurrentProduct} data={this.state} />
+            <Price_Block addToCart={this.addToCart} getCurrentProduct={this.getCurrentProduct} data={this.state}/>
           </Test>
           <SliderThumb product={this.state} />
         </div>

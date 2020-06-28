@@ -107,7 +107,7 @@ const Button = styled.button`
 `;
 
 var Price_Block = (props) => {
-  
+
   return(
     <PriceBlockWrapper>
       <ContentHeader>

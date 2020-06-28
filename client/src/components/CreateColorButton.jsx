@@ -115,8 +115,8 @@ var CreateColorButton = (props) => {
   const Color = props.item.color;
 
   return(
-      <Button data={Color} onClick={() => props.getCurrentProduct(props.item)}></Button>
+  <Button data={Color} onClick={() => props.getCurrentProduct(props.item)} onMouseEnter={() => props.colorHoverOn(Color)} onMouseLeave={props.colorHoverOff}></Button>
   )
 }
 
-export default CreateColorButton;
+export default CreateColorButton
