@@ -75,6 +75,32 @@ const Button = styled.button`
       return 'rgb(0, 76, 105)'
     } else if (color === '160-046 - Ochre-Super Grey') {
       return 'rgb(205, 158, 38)'
+    } else if (color === '342 - Raspberry Red') {
+      return 'rgb(150, 54, 65)'
+    } else if (color === '516 - Sage Green') {
+      return 'rgb(105, 137, 127)'
+    } else if (color === '356-420 - Dark Garnet-Plum') {
+      return 'rgb(69, 29, 34)'
+    } else if (color === '525-018 UN Blue-Stone Grey') {
+      return 'rgb(0, 121, 192)'
+    } else if (color === '555-520 - Dark Navy-Uncle Blue') {
+      return 'rgb(13, 5, 28)'
+    } else if (color === '662-625 - Deep Forest-Laurel Green') {
+      return 'rgb(52, 51, 25)'
+    } else if (color === '563-562 - Clay Blue-Mineral Blue') {
+      return 'rgb(111, 140, 152)'
+    } else if (color === '326-335 - Ox Red-Lava') {
+      return 'rgb(136, 31, 43)'
+    } else if (color === '356 - Dark Garnet') {
+      return 'rgb(69, 29, 34)'
+    } else if (color === '345 - Red Oak') {
+      return 'rgb(102, 45, 42)'
+    } else if (color === '625 - Laurel Green') {
+      return 'rgb(82, 91, 75)'
+    } else if (color === '664 - Frost Green') {
+      return 'rgb(64, 122, 123)'
+    } else if (color === '646 - Glacier Green') {
+      return 'rgb(0, 70, 79)'
     }
   }};
   width: 2vs;
