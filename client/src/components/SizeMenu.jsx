@@ -12,28 +12,57 @@ const StyledMenu = styled.select`
  border-radius: 2px;
 `;
 
-var SizeMenu = (props) => {
+class SizeMenu extends React.Component {
 
-  const ItemSize = props.data.size.map((item, index) => (
-    <option key={index}>{item}</option>
-  ))
+  constructor(props) {
+    super(props)
 
-  return(
-    <Wrapper>
-      <StyledMenu>{ItemSize}</StyledMenu>
-    </Wrapper>
-  )
+    this.state = {
+      isLoaded: false,
+      sizes: this.props.data.size,
+      hasSizes: false
+    }
+  }
 
-  /*use when refactored size propery is refactored into an array
+  componentDidMount() {
+    if (this.state.sizes[0] !== 'One Size') {
+      this.setState({
+        isLoaded: true,
+        hasSizes: true
+      })
+    } else {
+      this.setState({
+        isLoaded: true
+      })
+    }
+  }
 
-  return (
-    {props.data.size.map((item, index) => {
-      return (
-        <option key={index} value={item.size}>{item.size}</option>
+  render() {
+
+    const ItemSize = this.state.sizes.map((item, index) => (
+      <option key={index}>{item}</option>
+    ))
+
+    if (this.state.hasSizes === true) {
+      return(
+        <Wrapper>
+          <StyledMenu>
+            <option defaultValue="Select a size" hidden>Select a size</option>
+            {ItemSize}
+          </StyledMenu>
+        </Wrapper>
       )
-    }}
-  )*/
+    } else {
+      return(
+        <Wrapper>
+          <StyledMenu>
+            <option defaultValue="One Size" hidden>One Size</option>
+            {ItemSize}
+          </StyledMenu>
+        </Wrapper>
+      )
+    }
+  }
 }
-
 
 export default SizeMenu;
