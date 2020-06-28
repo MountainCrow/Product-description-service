@@ -10,6 +10,11 @@ const StyledCarousel = styled.div.attrs(props => ({
   overflow: hidden;
 `;
 
+const StyledCarouselCell = styled.img`
+  height: 600px;
+  width: 100%;
+`;
+
 // const StyledPrevButton = styled.button.attrs(props => ({
 //   className: 'flickity-prev-next-button',
 // }))`
@@ -31,32 +36,54 @@ const flickityOptions = {
   wrapAround: false,
   lazyLoad: true,
   cellAlign: 'left',
+  asNavFor: '.carousel-main'
 
 
   // groupCells: 1
   // contain: true
 }
 
-var Carousel = (props) => {
-  console.log("TEST", props)
+class Carousel extends React.Component {
 
-  return (
-    <StyledCarousel>
-      {/* <StyledPrevButton> */}
-        <Flickity
-          className={'carousel'} // default ''
-          elementType={'div'} // default 'div'
-          options={flickityOptions} // takes flickity options {}
-          disableImagesLoaded={false} // default false
-          reloadOnUpdate // default false
-          static // default false
+  constructor(props) {
+    super(props)
 
-        >
-          <img src={props.data.currentProduct.image[0]} style={{height: '600px', width: '100%'}}/>
-        </Flickity>
-      {/* </StyledPrevButton> */}
-    </StyledCarousel>
-  )
+    this.state = {
+      images: this.props.data.currentProduct.image
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps !== this.props) {
+      this.setState({
+        images: this.props.data.currentProduct.image,
+      })
+    }
+  }
+
+  render() {
+
+    let SliderImage = this.state.images.map((image, index) => (
+      <StyledCarouselCell src={image}/>
+    ))
+
+    return (
+      <StyledCarousel>
+        {/* <StyledPrevButton> */}
+          <Flickity
+            className={'carousel'} // default ''
+            elementType={'div'} // default 'div'
+            options={flickityOptions} // takes flickity options {}
+            disableImagesLoaded={false} // default false
+            reloadOnUpdate={true}
+            static // default false
+          >
+            {SliderImage}
+          </Flickity>
+        {/* </StyledPrevButton> */}
+      </StyledCarousel>
+    )
+  }
 }
 
 export default Carousel;

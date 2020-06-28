@@ -34,7 +34,7 @@ var StarRating = (props) => {
           } else if (index === solidStar && hasHalfStar === true && index < 5) {
             hasHalfStar = false;
             return (
-              <FaStarHalfAlt key={index} style={{color: '#cc1618'}}/>
+              <FaStarHalfAlt key={index} style={{color: '#cc1618', background: '#f4f4f4'}}/>
             )
           } else if (index >= solidStar && hasHalfStar === false && index < 5) {
             return (

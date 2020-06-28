@@ -5,7 +5,7 @@ import Price_Block from'./Price_Block.jsx';
 import SliderThumb from './SliderThumb.jsx'
 import styled from 'styled-components';
 
-const Test = styled.div`
+const MainWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,6 +13,7 @@ const Test = styled.div`
   max-height: 1000px;
   margin: 0 auto;
   background: f4f4f4;
+  z-index: 0;
 `;
 
 class App extends React.Component {
@@ -60,10 +61,10 @@ class App extends React.Component {
     if (this.state.isLoaded) {
       return(
         <div>
-          <Test>
+          <MainWrapper>
             <Carousel data={this.state} />
             <Price_Block addToCart={this.addToCart} getCurrentProduct={this.getCurrentProduct} data={this.state}/>
-          </Test>
+          </MainWrapper>
           <SliderThumb product={this.state} />
         </div>
       )
