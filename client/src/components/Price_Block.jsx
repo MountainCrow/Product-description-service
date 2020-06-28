@@ -8,7 +8,7 @@ const PriceBlockWrapper = styled.div`
   width: 100%;
   height: 600px;
   background: #f4f4f4;
-  font-family: sans-serif;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
 `;
 
 const ContentHeader = styled.div`
@@ -17,7 +17,7 @@ const ContentHeader = styled.div`
 
 const Heading = styled.h1`
   font-size: 28px;
-  font-weight: 900;
+  font-weight: 700;
   lett-spacing: 1.68px;
   line-height: 28px;
   margin: 0px;
@@ -107,7 +107,7 @@ const Button = styled.button`
 `;
 
 var Price_Block = (props) => {
-  console.log("PB: ", props.data.currentProduct.price)
+  
   return(
     <PriceBlockWrapper>
       <ContentHeader>
@@ -118,9 +118,9 @@ var Price_Block = (props) => {
       </ContentHeader>
       <Description>{props.data.currentProduct.description}</Description>
       <ColorButtonWrapper>
-        <Colors data={props.data} function={props.function}/>
+        <Colors data={props.data} getCurrentProduct={props.getCurrentProduct}/>
         <StyledMenu><SizeMenu data={props.data.currentProduct} /></StyledMenu>
-        <Button>ADD TO CART</Button>
+        <Button onClick={() => props.addToCart(props.data.currentProduct.price)} >ADD TO CART</Button>
       </ColorButtonWrapper>
     </PriceBlockWrapper>
   )
