@@ -64,8 +64,25 @@ let Product = mongoose.model("Product", productSchema);
 
 var getProducts = (callback) => {
 
+  const productType = ['backpack', 'jacket', 'tent']
+  const tents = ['KEB DOME', 'ABISKO VIEW', 'ABISKO LITE', 'ABISKO LITE 3', 'ABISKO DOME']
+  const backpacks = ['KANKEN LAPTOP 13\"', 'RAVEN 28','TOTEPACK NO.1']
+  const jackets = ['YUPIK PARKA M', 'STEN JACKET M', 'KAIPAK JACKET M', 'GREENLAND DOWN LINER JACKET M', 'STINA JACKET W', 'KEB JACKET W', 'SINGI DOWN JACKET W', 'NUUK PARKA W']
 
-  Product.find()
+  let randProductType = productType[Math.floor(Math.random() * 3)]
+  console.log(randProductType)
+
+  let randomProduct = 'RAVEN 28'
+
+  if (randProductType === 'backpack') {
+    randomProduct = backpacks[Math.floor(Math.random() * 3)]
+  } else if (randProductType === 'jacket') {
+    randomProduct = jackets[Math.floor(Math.random() * 8)]
+  } else {
+    randomProduct = tents[Math.floor(Math.random() * 5)]
+  }
+
+  Product.find({name: randomProduct})
   .limit() //set to one for now. Will refactor once components are built
   .exec((err, data) => {
     if (err) {
