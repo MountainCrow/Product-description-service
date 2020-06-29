@@ -30,7 +30,6 @@
     "flickity-imagesloaded": "^2.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-flickity-component": "^3.5.0",
     "react-icons": "^3.10.0",
     "react-slick": "^0.26.1",
     "styled-components": "^5.1.1"

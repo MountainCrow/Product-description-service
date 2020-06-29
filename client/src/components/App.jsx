@@ -55,6 +55,7 @@ class App extends React.Component {
     this.setState({
       totalPrice: this.state.totalPrice + newTotal
     }, () => {console.log("totalPrice: ", this.state.totalPrice)})
+    //Post request
   }
 
   render() {
@@ -65,9 +66,9 @@ class App extends React.Component {
             <Carousel data={this.state} />
             <Price_Block addToCart={this.addToCart} getCurrentProduct={this.getCurrentProduct} data={this.state}/>
           </MainWrapper>
-          {/* <div style={{paddingLeft: '525px'}}>
+          <div style={{paddingLeft: '525px'}}>
             <SliderThumb product={this.state} />
-          </div> */}
+          </div>
         </div>
       )
     } else {
