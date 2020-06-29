@@ -1,63 +1,56 @@
 import React from 'react';
-import ImageCell from './ImageCell.jsx';
 import Flickity from 'react-flickity-component';
-import styled from 'styled-components'
+import styled from 'styled-components';
+import Slider from 'react-slick';
 
 const StyledCarousel = styled.div.attrs(props => ({
   className: 'carousel',
 }))`
-  height: 100%;
-  width: 100%;
+  height: 500px;
+  width: 80%;
   overflow: hidden;
 `;
 
-// const StyledPrevButton = styled.button.attrs(props => ({
-//   className: 'flickity-prev-next-button',
-// }))`
-//   top: 50%;
-//   width: 44px;
-//   height: 44px;
-//   border-radius: 50%;
-//   /* vertically center */
-//   transform: translateY(-50%);
-// `;
+class Carousel extends React.Component {
 
-const flickityOptions = {
-  initialIndex: 0,
-  fullscreen: true,
-  imagesLoaded: true,
-  pageDots: false,
-  prevNextButtons: true,
-  adaptiveHeight: false,
-  wrapAround: false,
-  lazyLoad: true,
-  cellAlign: 'left',
+  constructor(props) {
+    super(props)
 
+    this.state = {
+      images: this.props.data.currentProduct.image
+    }
+  }
 
-  // groupCells: 1
-  // contain: true
-}
+  componentDidUpdate(prevProps) {
+    if (prevProps !== this.props) {
+      this.setState({
+        images: this.props.data.currentProduct.image,
+      })
+    }
+  }
 
-var Carousel = (props) => {
-  console.log("TEST", props)
+  render() {
 
-  return (
-    <StyledCarousel>
-      {/* <StyledPrevButton> */}
-        <Flickity
-          className={'carousel'} // default ''
-          elementType={'div'} // default 'div'
-          options={flickityOptions} // takes flickity options {}
-          disableImagesLoaded={false} // default false
-          reloadOnUpdate // default false
-          static // default false
+    let SliderImage = this.state.images.map((image, index) => (
+      <div key={index} style={{height: '100%', width: "auto"}}><img style={{height: '500px', width: "auto"}} src={image}/></div>
+    ))
 
-        >
-          <img src={props.data.currentProduct.image[0]} style={{height: '600px', width: '100%'}}/>
-        </Flickity>
-      {/* </StyledPrevButton> */}
-    </StyledCarousel>
-  )
+    const settings = {
+      dots: true,
+      infinite: false,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      lazyLoad: true,
+      initialSlide: 0
+    };
+    return (
+      <StyledCarousel>
+      <Slider style={{height: '100%', width: "100%"}} {...settings}>{SliderImage}</Slider>
+      </StyledCarousel>
+    )
+
+  }
 }
 
 export default Carousel;

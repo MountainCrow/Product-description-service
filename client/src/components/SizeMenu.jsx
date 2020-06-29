@@ -10,6 +10,10 @@ const StyledMenu = styled.select`
  border: 2px solid rgba(0, 0, 0, .15);
  background: #fff;
  border-radius: 2px;
+ color: #707070;
+ font-family: 'M PLUS Rounded 1c';
+ font-size: 14px;
+ font-weight: 400;
 `;
 
 class SizeMenu extends React.Component {
