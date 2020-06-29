@@ -65,7 +65,9 @@ class App extends React.Component {
             <Carousel data={this.state} />
             <Price_Block addToCart={this.addToCart} getCurrentProduct={this.getCurrentProduct} data={this.state}/>
           </MainWrapper>
-          <SliderThumb product={this.state} />
+          {/* <div style={{paddingLeft: '525px'}}>
+            <SliderThumb product={this.state} />
+          </div> */}
         </div>
       )
     } else {

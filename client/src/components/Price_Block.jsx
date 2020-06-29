@@ -5,8 +5,8 @@ import StarRating from './StarRating.jsx';
 import styled from 'styled-components';
 
 const PriceBlockWrapper = styled.div`
-  width: 100%;
-  height: 600px;
+  width: 90%;
+  height: 500px;
   background: #f4f4f4;
   font-family: 'M PLUS Rounded 1c', sans-serif;
 `;
@@ -17,7 +17,7 @@ const ContentHeader = styled.div`
 
 const Heading = styled.h1`
   font-size: 28px;
-  font-weight: 700;
+  font-weight: 900;
   lett-spacing: 1.68px;
   line-height: 28px;
   margin: 0px;
@@ -27,38 +27,65 @@ const Heading = styled.h1`
   padding-left: 5%;
 `;
 
-const Gender = styled.span`
+const SubHeadingWrapper = styled.div`
+  display: flex;
+  width: 90%;
+`;
+
+const Gender = styled.div`
   font-size: 12px;
+  color: #707070;
   font-weight: 700;
   letter-spacing: 0.42px;
   line-height: 30px;
   text-align: left;
   text-size-adjust: 100%;
+  width: 50px;
+  padding-left: 6.2%;
+`;
+
+const Style = styled.div`
+  font-size: 12px;
+  color: #707070;
+  font-weight: 400;
+  letter-spacing: 0.42px;
+  line-height: 30px;
+  text-align: left;
+  text-size-adjust: 100%;
   width: 90%;
-  padding-left: 5%;
+  padding-left: 1%;
+`;
+
+const StyledRating = styled.div`
+  line-height: 30px;
+  text-size-adjust: 100%;
+  width: 100%;
+  padding-left: 35%;
+  padding-bottom: 2px;
 `;
 
 const Price = styled.span`
   font-size: 20px;
+  color: #303030;
   font-weight: 400;
-  letter-spacing: 0.42;
+  letter-spacing: .03em;
   line-height: 30px;
   margin-top: 10px;
-  text-align: left;
   text-size-adjust: 100%;
-  width: 90%;
+  width: 100%;
   padding-left: 5%;
 `;
 
 const Description = styled.p`
   font-size: 14px;
+  color: #303030;
   font-weight: 400;
   letter-spacing: 0.42px;
   line-height: 21px;
   margin: 0px;
   text-align: left;
   text-size-adjust: 100%;
-  width: 90%;
+  width: 85%;
   padding-left: 5%;
 `;
 
@@ -79,6 +106,7 @@ const ColorButtonWrapper = styled.div`
 const StyledMenu = styled.div`
   padding-top: 12px;
   padding-bottom: 5px;
+  width: 45%;
 `;
 
 const Button = styled.button`
@@ -104,24 +132,35 @@ const Button = styled.button`
   padding-right: 25px;
   padding-top: 12px;
   padding-bottom: 12px;
+  width: 40%;
+  transition: .2s ease-in-out;
 `;
 
 var Price_Block = (props) => {
 
   return(
     <PriceBlockWrapper>
+
       <ContentHeader>
         <Heading>{props.data.currentProduct.name}</Heading>
-        <Gender>{props.data.currentProduct.gender} {props.data.currentProduct.style}</Gender>
-        <StarRating data={props.data.currentProduct}></StarRating>
+
+        <SubHeadingWrapper>
+          <Gender>{props.data.currentProduct.gender}</Gender>
+          <Style>{props.data.currentProduct.style}</Style>
+          <StyledRating><StarRating data={props.data.currentProduct}></StarRating></StyledRating>
+        </SubHeadingWrapper>
+
         <Price>${props.data.currentProduct.price}</Price>
       </ContentHeader>
-      <Description>{props.data.currentProduct.description}</Description>
+
+      <Description>{props.data.currentProduct.description}<span style={{paddingLeft: '7px', fontSize: '14px', fontWeight: 'bold', color: '#303030'}}>Read More<span style={{paddingLeft: '5px', fontSize: '14px', fontWeight: '900', color: '#cc1618', fontFamily: "sans-serif"}}>></span></span></Description>
+
       <ColorButtonWrapper>
         <Colors data={props.data} getCurrentProduct={props.getCurrentProduct}/>
         <StyledMenu><SizeMenu data={props.data.currentProduct} /></StyledMenu>
         <Button onClick={() => props.addToCart(props.data.currentProduct.price)} >ADD TO CART</Button>
       </ColorButtonWrapper>
+
     </PriceBlockWrapper>
   )
 }

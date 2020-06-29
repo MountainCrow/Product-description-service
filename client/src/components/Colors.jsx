@@ -3,10 +3,16 @@ import CreateColorButton from './CreateColorButton.jsx';
 import styled from 'styled-components';
 
 const StyledLabel = styled.div`
-  padding-bottom: 10px;
+  padding-bottom: 5px;
+  color: #707070;
+  font-size: 12px;
 `;
 
-const StyledButton = styled.div`
+const StyledButtonWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  cursor: pointer;
 `;
 
 class Colors extends React.Component {
@@ -48,14 +54,14 @@ class Colors extends React.Component {
       return(
         <div>
           <StyledLabel>{this.props.data.currentProduct.color}</StyledLabel>
-          <StyledButton>{ColorButton}</StyledButton>
+          <StyledButtonWrapper>{ColorButton}</StyledButtonWrapper>
         </div>
       )
     } else {
       return(
         <div>
           <StyledLabel>{this.state.tempColor}</StyledLabel>
-          <StyledButton>{ColorButton}</StyledButton>
+          <StyledButtonWrapper>{ColorButton}</StyledButtonWrapper>
         </div>
       )
     }

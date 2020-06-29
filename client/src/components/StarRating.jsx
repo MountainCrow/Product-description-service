@@ -7,11 +7,21 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 150px;
+  padding-bottom: 5px;
+`;
+
+const StyledLabel = styled.label`
+  padding-bottom: 14px;
 `;
 
 const StyledTotal = styled.span`
-  padding-bottom: 4px;
+  padding-bottom: 17px;
   padding-left: 5px;
+  text-align: right;
+  font-size: 14px;
+  font-weight: 400;
+  color: #303030;
 `;
 
 var StarRating = (props) => {
@@ -25,7 +35,7 @@ var StarRating = (props) => {
 
   return(
     <Wrapper>
-      <label>
+      <StyledLabel>
         {[...Array(5)].map((star, index) => {
           if (index < solidStar) {
             return(
@@ -42,7 +52,7 @@ var StarRating = (props) => {
             )
           }
         })}
-      </label>
+      </StyledLabel>
       <StyledTotal>({props.data.totalRatings})</StyledTotal>
     </Wrapper>
   )

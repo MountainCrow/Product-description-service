@@ -102,12 +102,28 @@ const Button = styled.button`
       return 'rgb(0, 70, 79)'
     }
   }};
-  width: 2vs;
   height: 25px;
-  padding: 25px;
+  width: 25px;
   border: 1px solid transparent;
   border-radius: 50%;
-  transition: .2s ease-in-out;
+  margin: 5px 5px 5px 5px;
+  outline: none;
+  cursor: pointer;
+  `;
+
+const StyleButtonBorder = styled.span`
+  background-color: 'orange';
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 1px solid #b5b5b5;
+  margin: 0px 3px 0px 0px;
+
+  &:hover {
+    width: 34.5px;
+    height: 34.5px;
+    border-radius: 50%;
+    border: 1.5px solid #b5b5b5;
 `;
 
 var CreateColorButton = (props) => {
@@ -115,7 +131,8 @@ var CreateColorButton = (props) => {
   const Color = props.item.color;
 
   return(
-  <Button data={Color} onClick={() => props.getCurrentProduct(props.item)} onMouseEnter={() => props.colorHoverOn(Color)} onMouseLeave={props.colorHoverOff}></Button>
+    <StyleButtonBorder onClick={() => props.getCurrentProduct(props.item)}  onMouseEnter={() => props.colorHoverOn(Color)} onMouseLeave={() => props.colorHoverOff()}><Button data={Color}></Button></StyleButtonBorder>
+
   )
 }
 
