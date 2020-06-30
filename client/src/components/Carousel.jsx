@@ -2,20 +2,26 @@ import React from 'react';
 import styled from 'styled-components';
 import Slider from 'react-slick';
 
-const StyledCarousel = styled.div.attrs(props => ({
-  className: 'carousel',
-}))`
+const StyledCarousel = styled.div`
   height: 500px;
   width: 80%;
-
+  overflow: hidden;
 `;
+
+
+// const StyledCarousel = styled.div.attrs(props => ({
+//   className: 'carousel',
+// }))`
+//   height: 500px;
+//   width: 80%;
+// `;
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
     <div
       className={className}
-      style={{ ...style, display: "block", color: 'grey', background: "transparent" }}
+      style={{ ...style, display: "block", background: "red" }}
       onClick={onClick}
     />
   );
