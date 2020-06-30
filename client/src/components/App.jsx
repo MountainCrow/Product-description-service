@@ -11,9 +11,8 @@ const MainWrapper = styled.div`
   justify-content: center;
   max-width: 1185px;
   max-height: 1000px;
-  margin: 0 auto;
+  margin: 0 auto 0 auto;
   background: f4f4f4;
-  z-index: 0;
 `;
 
 class App extends React.Component {
@@ -32,7 +31,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/products')
+    axios.get('http://localhost:3001/products')
     .then(data => {
       console.log("GET: ", data)
       this.setState({
@@ -55,12 +54,13 @@ class App extends React.Component {
     this.setState({
       totalPrice: this.state.totalPrice + newTotal
     }, () => {console.log("totalPrice: ", this.state.totalPrice)})
+    //Post request
   }
 
   render() {
     if (this.state.isLoaded) {
       return(
-        <div>
+        <div >
           <MainWrapper>
             <Carousel data={this.state} />
             <Price_Block addToCart={this.addToCart} getCurrentProduct={this.getCurrentProduct} data={this.state}/>
@@ -79,3 +79,5 @@ class App extends React.Component {
 }
 
 export default App;
+
+//style={{display: 'flex', justifyContent: 'center', margin: '0 919.5px 0 919.5px'}}

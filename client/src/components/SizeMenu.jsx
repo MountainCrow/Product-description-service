@@ -22,7 +22,6 @@ class SizeMenu extends React.Component {
     super(props)
 
     this.state = {
-      isLoaded: false,
       sizes: this.props.data.size,
       hasSizes: false
     }
@@ -31,12 +30,7 @@ class SizeMenu extends React.Component {
   componentDidMount() {
     if (this.state.sizes[0] !== 'One Size') {
       this.setState({
-        isLoaded: true,
         hasSizes: true
-      })
-    } else {
-      this.setState({
-        isLoaded: true
       })
     }
   }

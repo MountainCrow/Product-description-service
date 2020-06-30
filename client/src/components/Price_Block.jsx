@@ -2,6 +2,7 @@ import React from 'react';
 import SizeMenu from './SizeMenu.jsx';
 import Colors from './Colors.jsx';
 import StarRating from './StarRating.jsx';
+import {FaShoppingBag} from 'react-icons/fa'
 import styled from 'styled-components';
 
 const PriceBlockWrapper = styled.div`
@@ -158,7 +159,7 @@ var Price_Block = (props) => {
       <ColorButtonWrapper>
         <Colors data={props.data} getCurrentProduct={props.getCurrentProduct}/>
         <StyledMenu><SizeMenu data={props.data.currentProduct} /></StyledMenu>
-        <Button onClick={() => props.addToCart(props.data.currentProduct.price)} >ADD TO CART</Button>
+        <Button onClick={() => props.addToCart(props.data.currentProduct.price)} ><FaShoppingBag/> ADD TO CART</Button>
       </ColorButtonWrapper>
 
     </PriceBlockWrapper>

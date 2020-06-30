@@ -11,8 +11,15 @@ const sample = require('../database/sample_data.js')
 
 app.use(cors());
 app.use(morgan('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}))
 
 app.use(express.static(path.join(__dirname, '../../client/dist')));
+
+const corsOptions = {
+  origin: 'http://localhost/3000',
+  optionSuccessStatus: 200
+}
 
 // use to populate db with mock data
 // db.build(sample.data, (err, data) => {
@@ -38,7 +45,7 @@ app.get('/products', (req, res) => {
     console.log("POST is working...")
 })*/
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => {
   console.log(`Server is running on PORT: ${PORT}`)
