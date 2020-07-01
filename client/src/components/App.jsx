@@ -1,9 +1,9 @@
-import React from 'react';
-import axios from 'axios';
-import Carousel from './Carousel.jsx';
-import Price_Block from'./Price_Block.jsx';
+import React from 'react'
+import axios from 'axios'
+import Carousel from './Carousel.jsx'
+import Price_Block from'./Price_Block.jsx'
 import SliderThumb from './SliderThumb.jsx'
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const MainWrapper = styled.div`
   display: flex;
@@ -65,9 +65,6 @@ class App extends React.Component {
             <Carousel data={this.state} />
             <Price_Block addToCart={this.addToCart} getCurrentProduct={this.getCurrentProduct} data={this.state}/>
           </MainWrapper>
-          {/* <div style={{paddingLeft: '525px'}}>
-            <SliderThumb product={this.state} />
-          </div> */}
         </div>
       )
     } else {
@@ -79,5 +76,3 @@ class App extends React.Component {
 }
 
 export default App;
-
-//style={{display: 'flex', justifyContent: 'center', margin: '0 919.5px 0 919.5px'}}

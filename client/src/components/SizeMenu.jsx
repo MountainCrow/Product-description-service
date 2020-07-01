@@ -1,12 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Wrapper = styled.div`
-`;
-
 const StyledMenu = styled.select`
- width: 100%;
- padding: 10px 30px 10px 20px;
+ width: 250px;
+ padding: 15px 30px 15px 20px;
  border: 2px solid rgba(0, 0, 0, .15);
  background: #fff;
  border-radius: 2px;
@@ -44,21 +41,21 @@ class SizeMenu extends React.Component {
 
     if (this.state.hasSizes === true) {
       return(
-        <Wrapper>
+        <div>
           <StyledMenu>
             <option defaultValue="Select a size" hidden>Select a size</option>
             {ItemSize}
           </StyledMenu>
-        </Wrapper>
+        </div>
       )
     } else {
       return(
-        <Wrapper>
+        <div>
           <StyledMenu>
             <option defaultValue="One Size" hidden>One Size</option>
             {ItemSize}
           </StyledMenu>
-        </Wrapper>
+        </div>
       )
     }
   }
