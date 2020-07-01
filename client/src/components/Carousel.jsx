@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import Slider from 'react-slick';
 
 const StyledCarousel = styled.div`
-  height: 500px;
-  width: 80%;
+  height: 600px;
+  width: 100%;
+  background: white;
   overflow: hidden;
 `;
 
@@ -59,7 +60,7 @@ class Carousel extends React.Component {
   render() {
 
     let SliderImage = this.state.images.map((image, index) => (
-      <div key={index} style={{height: '100%', width: "auto"}}><img style={{height: '500px', width: "auto"}} src={image}/></div>
+      <div key={index} style={{height: '100%', width: "auto"}}><img style={{height: '600px', width: "auto"}} src={image}/></div>
     ))
 
     const settings = {

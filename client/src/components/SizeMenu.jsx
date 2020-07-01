@@ -14,6 +14,7 @@ const StyledMenu = styled.select`
  font-family: 'M PLUS Rounded 1c';
  font-size: 14px;
  font-weight: 400;
+ margin-bottom: 5px;
 `;
 
 class SizeMenu extends React.Component {
