@@ -11,7 +11,7 @@ const MainWrapper = styled.div`
   justify-content: center;
   max-width: 1185px;
   max-height: 1000px;
-  margin: 0 auto 0 auto;
+  margin: 200px auto 0 auto;
   background: f4f4f4;
 `;
 

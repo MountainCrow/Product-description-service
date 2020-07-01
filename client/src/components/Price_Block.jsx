@@ -6,9 +6,10 @@ import {FaShoppingBag} from 'react-icons/fa'
 import styled from 'styled-components';
 
 const PriceBlockWrapper = styled.div`
-  width: 90%;
-  height: 500px;
-  background: #f4f4f4;
+  width: 100%;
+  height: 600px;
+  background: rgb(244,244,244);
+  background: linear-gradient(180deg, rgba(244,244,244,1) 55%, rgba(235,235,235,1) 88%);
   font-family: 'M PLUS Rounded 1c', sans-serif;
 `;
 
