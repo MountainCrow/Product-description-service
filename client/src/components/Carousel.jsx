@@ -1,41 +1,89 @@
 import React from 'react';
 import styled from 'styled-components';
 import Slider from 'react-slick';
+import SliderThumb from './SliderThumb.jsx';
+import {MdChevronRight} from 'react-icons/md';
+import {MdChevronLeft} from 'react-icons/md';
+
+const StyledCarouselWrapper = styled.div`
+  position: relative;
+  height: 600px;
+  width: 100%;
+  overflow: hidden;
+  background: #f4f4f4;
+`;
 
 const StyledCarousel = styled.div`
   height: 600px;
   width: 100%;
-  background: white;
-  overflow: hidden;
+  background: #f4f4f4;
 `;
 
+const StyledImageContainer = styled.div`
+  height: 565px;
+  background: white;
+  width: auto;
+`;
 
-// const StyledCarousel = styled.div.attrs(props => ({
-//   className: 'carousel',
-// }))`
-//   height: 500px;
-//   width: 80%;
-// `;
+const StyledImage = styled.img`
+  height: 500px;
+  width: auto;
+  margin: 15px 10px 10px 45px;
+`;
+
+const StyledLeftArrow = styled.i`
+  //display: block;
+  position: absolute;
+  color: rgb(170, 170, 170);
+  left: 1%;
+  top: 40%;
+  z-index: 1;
+  font-size: 70px;
+  opacity: 50%;
+  border-radius: none;
+
+  &:hover {
+    opacity: 100%
+  }
+`;
+
+const StyledRightArrow = styled.i`
+  //display: block;
+  position: absolute;
+  color: rgb(170, 170, 170);
+  right: 1%;
+  top: 40%;
+  z-index: 1;
+  font-size: 70px;
+  opacity: 50%;
+  border-radius: none;
+
+  &:hover {
+    opacity: 100%
+  }
+`;
+
+const StyledThumb = styled.div`
+  position: absolute;
+  left: 4%;
+  top: 88%;
+  display: flex;
+  justify-content: center;
+  width: 550px;
+  z-index: 1;
+`;
 
 function SampleNextArrow(props) {
-  const { className, style, onClick } = props;
+  const { onClick } = props;
   return (
-    <div
-      className={className}
-      style={{ ...style, display: "block", background: "red" }}
-      onClick={onClick}
-    />
+    <StyledRightArrow onClick={onClick}><MdChevronRight/></StyledRightArrow>
   );
 }
 
 function SamplePrevArrow(props) {
-  const { className, style, onClick } = props;
+  const { onClick } = props;
   return (
-    <div
-      className={className}
-      style={{ ...style, display: "block", background: "green" }}
-      onClick={onClick}
-    />
+    <StyledLeftArrow onClick={onClick}><MdChevronLeft/></StyledLeftArrow>
   );
 }
 
@@ -60,11 +108,11 @@ class Carousel extends React.Component {
   render() {
 
     let SliderImage = this.state.images.map((image, index) => (
-      <div key={index} style={{height: '100%', width: "auto"}}><img style={{height: '600px', width: "auto"}} src={image}/></div>
+      <StyledImageContainer key={index}><StyledImage src={image}/></StyledImageContainer>
     ))
 
     const settings = {
-      dots: true,
+      dots: false,
       infinite: false,
       speed: 500,
       slidesToShow: 1,
@@ -75,11 +123,13 @@ class Carousel extends React.Component {
       prevArrow: <SamplePrevArrow />
     };
     return (
-      <StyledCarousel>
-      <Slider style={{height: '100%', width: "100%"}} {...settings}>{SliderImage}</Slider>
-      </StyledCarousel>
+      <StyledCarouselWrapper>
+        <StyledCarousel>
+          <Slider {...settings}>{SliderImage}</Slider>
+        </StyledCarousel>
+        <div><StyledThumb><SliderThumb product={this.state.images}/></StyledThumb></div>
+      </StyledCarouselWrapper>
     )
-
   }
 }
 

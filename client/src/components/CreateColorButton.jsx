@@ -102,8 +102,8 @@ const Button = styled.button`
       return 'rgb(0, 70, 79)'
     }
   }};
-  height: 25px;
-  width: 25px;
+  height: 30px;
+  width: 30px;
   border: 1px solid transparent;
   border-radius: 50%;
   margin: 5px 5px 5px 5px;
@@ -113,15 +113,15 @@ const Button = styled.button`
 
 const StyleButtonBorder = styled.span`
   background-color: 'orange';
-  width: 35px;
-  height: 35px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   border: 1px solid #b5b5b5;
   margin: 0px 3px 0px 0px;
 
   &:hover {
-    width: 34.5px;
-    height: 34.5px;
+    width: 39.5px;
+    height: 39.5px;
     border-radius: 50%;
     border: 1.5px solid #b5b5b5;
 `;

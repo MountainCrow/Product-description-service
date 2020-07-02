@@ -1,20 +1,21 @@
-import React from 'react';
-import SizeMenu from './SizeMenu.jsx';
-import Colors from './Colors.jsx';
-import StarRating from './StarRating.jsx';
+import React from 'react'
+import SizeMenu from './SizeMenu.jsx'
+import Colors from './Colors.jsx'
+import StarRating from './StarRating.jsx'
 import {FaShoppingBag} from 'react-icons/fa'
-import styled from 'styled-components';
+import {FaPlusCircle} from 'react-icons/fa'
+import styled from 'styled-components'
 
 const PriceBlockWrapper = styled.div`
   width: 100%;
-  height: 600px;
+  height: 530px;
   background: rgb(244,244,244);
   background: linear-gradient(180deg, rgba(244,244,244,1) 55%, rgba(235,235,235,1) 88%);
   font-family: 'M PLUS Rounded 1c', sans-serif;
 `;
 
 const ContentHeader = styled.div`
-  padding-top: 50px;
+  padding-top: 10px;
 `;
 
 const Heading = styled.h1`
@@ -114,28 +115,30 @@ const StyledMenu = styled.div`
 const Button = styled.button`
   background: #cc1618;
   color: #fff;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
   font-stretch: 100%;
   letter-spacing: 0.42px;
-  line-height: 20px;
+  line-height: 35px;
   padding-top: 12px;
   padding-bottom: 12px;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+  border-radius: 4px;
   border: 0;
   justify-content: center;
   vertical-align: middle;
   cursor: pointer
-  font-weight: 700;
   padding-left: 25px;
   padding-right: 25px;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  width: 40%;
-  transition: .2s ease-in-out;
+  width: 45%;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 2px 0;
+  outline: none;
+
+  &:hover {
+    transition-delay: 0s;
+    transition-duration: 0.2s;
+    transition-property: box-shadow, transform, background, color;
+    transition-timing-function: ease;
+  }
 `;
 
 var Price_Block = (props) => {
@@ -160,7 +163,7 @@ var Price_Block = (props) => {
       <ColorButtonWrapper>
         <Colors data={props.data} getCurrentProduct={props.getCurrentProduct}/>
         <StyledMenu><SizeMenu data={props.data.currentProduct} /></StyledMenu>
-        <Button onClick={() => props.addToCart(props.data.currentProduct.price)} ><FaShoppingBag/> ADD TO CART</Button>
+        <Button onClick={() => props.addToCart(props.data.currentProduct.price)} >{<FaShoppingBag/>} ADD TO CART</Button>
       </ColorButtonWrapper>
 
     </PriceBlockWrapper>
