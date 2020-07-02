@@ -9,7 +9,7 @@ const StyledMenu = styled.select`
  border-radius: 2px;
  color: #707070;
  font-family: 'M PLUS Rounded 1c';
- font-size: 14px;
+ font-size: 16px;
  font-weight: 400;
  margin-bottom: 5px;
 `;

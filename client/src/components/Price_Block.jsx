@@ -130,7 +130,15 @@ const Button = styled.button`
   padding-left: 25px;
   padding-right: 25px;
   width: 45%;
-  transition: .2s ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 2px 0;
+  outline: none;
+
+  &:hover {
+    transition-delay: 0s;
+    transition-duration: 0.2s;
+    transition-property: box-shadow, transform, background, color;
+    transition-timing-function: ease;
+  }
 `;
 
 var Price_Block = (props) => {
