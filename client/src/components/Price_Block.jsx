@@ -140,22 +140,22 @@ const Button = styled.button`
     transition-timing-function: ease;
   }
 `;
-
+//main component that renders an add to cart button and product details pertaining to name, gender, price, description, color, and size.
 var Price_Block = (props) => {
 
   return(
     <PriceBlockWrapper>
 
       <ContentHeader>
-        <Heading>{props.data.currentProduct.name}</Heading>
+        <Heading className="heading">{props.data.currentProduct.name}</Heading>
 
         <SubHeadingWrapper>
-          <Gender>{props.data.currentProduct.gender}</Gender>
-          <Style>{props.data.currentProduct.style}</Style>
+          <Gender className="gender">{props.data.currentProduct.gender}</Gender>
+          <Style className="style">{props.data.currentProduct.style}</Style>
           <StyledRating><StarRating data={props.data.currentProduct}></StarRating></StyledRating>
         </SubHeadingWrapper>
 
-        <Price>${props.data.currentProduct.price}</Price>
+        <Price className="price">${props.data.currentProduct.price}</Price>
       </ContentHeader>
 
       <Description>{props.data.currentProduct.description}<span style={{paddingLeft: '7px', fontSize: '14px', fontWeight: 'bold', color: '#303030'}}>Read More<span style={{paddingLeft: '5px', fontSize: '14px', fontWeight: '900', color: '#cc1618', fontFamily: "sans-serif"}}>></span></span></Description>

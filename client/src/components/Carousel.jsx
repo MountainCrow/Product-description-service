@@ -95,6 +95,7 @@ class Carousel extends React.Component {
     this.state = {
       images: this.props.data.currentProduct.image
     }
+
   }
 
   componentDidUpdate(prevProps) {

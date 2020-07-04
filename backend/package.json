@@ -4,8 +4,7 @@
   "description": "",
   "main": "./server/server.js",
   "scripts": {
-    "server:dev": "nodemon server.js",
-    "server:test": "jest"
+    "server:dev": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
@@ -20,10 +19,8 @@
     "eslint-plugin-react": "^7.20.0",
     "eslint-plugin-react-hooks": "^4.0.4",
     "express": "^4.17.1",
-    "jest": "^26.0.1",
     "mongoose": "^5.9.19",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.4",
-    "supertest": "^4.0.2"
+    "nodemon": "^2.0.4"
   }
 }

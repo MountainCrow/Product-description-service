@@ -13,52 +13,29 @@ const StyledMenu = styled.select`
  font-weight: 400;
  margin-bottom: 5px;
 `;
+//Creates dropdown size menu using <select> and <option> tags
+var SizeMenu = (props) => {
 
-class SizeMenu extends React.Component {
+  let oneSize = null;
 
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      sizes: this.props.data.size,
-      hasSizes: false
-    }
+  if (props.data.size[0] === 'One Size') {
+    oneSize = 'One Size';
   }
+  //Determines placeholder value for dropdown menu.
+  let placeholderValue = oneSize || 'Select a Size'
+  //map through array of props size property and renders to dropdown menu
+  const ItemSize = props.data.size.map((item, index) => (
+    <option key={index}>{item}</option>
+  ))
 
-  componentDidMount() {
-    if (this.state.sizes[0] !== 'One Size') {
-      this.setState({
-        hasSizes: true
-      })
-    }
-  }
-
-  render() {
-
-    const ItemSize = this.state.sizes.map((item, index) => (
-      <option key={index}>{item}</option>
-    ))
-
-    if (this.state.hasSizes === true) {
-      return(
-        <div>
-          <StyledMenu>
-            <option defaultValue="Select a size" hidden>Select a size</option>
-            {ItemSize}
-          </StyledMenu>
-        </div>
-      )
-    } else {
-      return(
-        <div>
-          <StyledMenu>
-            <option defaultValue="One Size" hidden>One Size</option>
-            {ItemSize}
-          </StyledMenu>
-        </div>
-      )
-    }
-  }
+  return(
+    <div>
+      <StyledMenu>
+        <option className='placeholder' defaultValue={placeholderValue} hidden>{placeholderValue}</option>
+        {ItemSize}
+      </StyledMenu>
+    </div>
+  )
 }
 
 export default SizeMenu;
