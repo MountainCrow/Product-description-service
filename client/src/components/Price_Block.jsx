@@ -100,6 +100,7 @@ const ReadMoreWrapper = styled.div`
   width: 100px;
 
   &:hover {
+    cursor: pointer;
     .read-more {
       color: #cc1618;
     };
@@ -119,7 +120,7 @@ const StyledReadMore = styled.div`
 `;
 
 const StyledChevron = styled.i`
-  top: 1.2px;
+  top: 1.1px;
   font-size: 25px;
   color: #cc1618;
   position: absolute;
@@ -153,25 +154,82 @@ const Button = styled.button`
   font-size: 16px;
   font-weight: 700;
   font-stretch: 100%;
-  letter-spacing: 0.42px;
-  line-height: 30px;
+  height: 52px;
   padding: 12px 25px 12px 25px;
   border-radius: 4px;
   border: 0;
   outline: none;
-  cursor: pointer
+  cursor: pointer;
   width: 45%;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 2px 0;
   transition-duration: .2s;
   transition-timing-function: ease-in-out;
+  position: relative;
 
   &:hover {
     transform: translateY(-3px);
     transition-duration: .2s;
     transition-timing-function: ease-in-out;
     box-shadow: rgba(0, 0, 0, .3) 0px 2px 2px 0;
+    .bag-icon{
+      transform: translateX(-2px);
+      transition-duration: .2s;
+      transition-timing-function: ease-in-out;
+    }
+    .plus-circle-icon-wrapper{
+      transform: translate(3px, -6px) scale(1.4);
+      transition-duration: .2s;
+      transition-timing-function: ease-in-out;
+    }
+  }
+
+  &:active {
+    background-color: #8f0f11;
+    box-shadow: rgba(0, 0, 0, .3) 0px 2px 2px 0;
+    transform: translateY(4px);
+    .plus-circle-icon-wrapper{
+      background: #8f0f11;
+    };
   }
 `;
+
+const StyledBagIcon = styled.i`
+  font-size: 25px;
+  height: 30px;
+  position: absolute;
+  left: 35px;
+  top: 12px;
+  transition-duration: .2s;
+  transition-timing-function: ease-in-out;
+`;
+
+const StyledPlusCircleWrapper = styled.span`
+  height: 18px;
+  width: 18px;
+  background: #cc1618;
+  border-radius: 50%;
+  position: absolute;
+  left: 47px;
+  top: 25px;
+  transition-duration: .2s;
+  transition-timing-function: ease-in-out;
+`;
+
+const StyledPlusCircleIcon = styled.i`
+  font-size: 15px;
+  top: 1.5px;
+  left: 1.5px;
+  position: absolute;
+`;
+
+const StyledButtonText = styled.span`
+  position: absolute;
+  width: 140px;
+  left: 68px;
+  top: 18px;
+  letter-spacing: 0.5px;
+`;
+
 //main component that renders an add to cart button and product details pertaining to name, gender, price, description, color, and size.
 var Price_Block = (props) => {
 
@@ -194,8 +252,17 @@ var Price_Block = (props) => {
 
       <ColorButtonWrapper>
         <Colors data={props.data} getCurrentProduct={props.getCurrentProduct}/>
+
         <StyledMenu><SizeMenu data={props.data.currentProduct} /></StyledMenu>
-        <Button onClick={() => props.addToCart(props.data.currentProduct.price)} >{<FaShoppingBag/>} ADD TO CART</Button>
+
+        <Button onClick={() => props.addToCart(props.data.currentProduct.price)}>
+
+          <StyledBagIcon className="bag-icon">{<FaShoppingBag/>}</StyledBagIcon>
+
+          <StyledPlusCircleWrapper className="plus-circle-icon-wrapper"><StyledPlusCircleIcon className="plus-circle-icon">{<FaPlusCircle/>}</StyledPlusCircleIcon></StyledPlusCircleWrapper>
+          <StyledButtonText>ADD TO CART</StyledButtonText>
+
+        </Button>
       </ColorButtonWrapper>
 
     </PriceBlockWrapper>
