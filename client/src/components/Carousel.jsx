@@ -93,7 +93,8 @@ class Carousel extends React.Component {
     super(props)
 
     this.state = {
-      images: this.props.data.currentProduct.image
+      images: this.props.data.currentProduct.image,
+      currentImage: ''
     }
 
   }
@@ -135,3 +136,4 @@ class Carousel extends React.Component {
 }
 
 export default Carousel
+
