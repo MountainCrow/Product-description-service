@@ -1,7 +1,7 @@
-import React from 'react';
-import { shallow, mount, render } from 'enzyme';
+import React from 'react'
+import { shallow, mount, render } from 'enzyme'
 import renderer from "react-test-renderer"
-import StarRating from '../src/components/StarRating.jsx';
+import StarRating from '../src/components/StarRating.jsx'
 
 describe("Component testing for <StarRating/>", () => {
 
@@ -21,7 +21,7 @@ describe("Component testing for <StarRating/>", () => {
       image: ["https://hrphxfec.s3-us-west-1.amazonaws.com/Kanken+Laptop+13/kanken_acorn.jpg"]
 
     }
-  };
+  }
 
   test("<StarRating/> should render", () => {
 

@@ -34,8 +34,8 @@ describe("Component testing for <Colors/>", () => {
         image: ["https://hrphxfec.s3-us-west-1.amazonaws.com/Kanken+Laptop+13/kanken_acorn.jpg"]
       }
     }
-  };
-
+  }
+  
   test("<Colors/> should render", () => {
 
     const wrapper = shallow(<Colors {...props}/>)

@@ -1,7 +1,7 @@
-import React from 'react';
-import {FaStar} from 'react-icons/fa';
-import {FaStarHalfAlt} from 'react-icons/fa';
-import styled from 'styled-components';
+import React from 'react'
+import {FaStar} from 'react-icons/fa'
+import {FaStarHalfAlt} from 'react-icons/fa'
+import styled from 'styled-components'
 
 const Wrapper = styled.div`
   display: flex;
@@ -58,4 +58,4 @@ var StarRating = (props) => {
   )
 }
 
-export default StarRating;
+export default StarRating

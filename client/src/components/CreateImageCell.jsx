@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
 const StyledThumb = styled.img`
   width: 60px;
@@ -15,4 +15,4 @@ const CreateImageCell = (props) => {
   )
 }
 
-export default CreateImageCell;
+export default CreateImageCell

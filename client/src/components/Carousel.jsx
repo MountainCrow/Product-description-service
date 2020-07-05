@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
-import Slider from 'react-slick';
-import SliderThumb from './SliderThumb.jsx';
-import {MdChevronRight} from 'react-icons/md';
-import {MdChevronLeft} from 'react-icons/md';
+import React from 'react'
+import styled from 'styled-components'
+import Slider from 'react-slick'
+import SliderThumb from './SliderThumb.jsx'
+import {MdChevronRight} from 'react-icons/md'
+import {MdChevronLeft} from 'react-icons/md'
 
 const StyledCarouselWrapper = styled.div`
   position: relative;
@@ -77,14 +77,14 @@ function SampleNextArrow(props) {
   const { onClick } = props;
   return (
     <StyledRightArrow onClick={onClick}><MdChevronRight/></StyledRightArrow>
-  );
+  )
 }
 
 function SamplePrevArrow(props) {
   const { onClick } = props;
   return (
     <StyledLeftArrow onClick={onClick}><MdChevronLeft/></StyledLeftArrow>
-  );
+  )
 }
 
 class Carousel extends React.Component {
@@ -134,4 +134,4 @@ class Carousel extends React.Component {
   }
 }
 
-export default Carousel;
+export default Carousel

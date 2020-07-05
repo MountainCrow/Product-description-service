@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
 const StyledMenu = styled.select`
  width: 250px;
@@ -19,7 +19,7 @@ var SizeMenu = (props) => {
   let oneSize = null;
 
   if (props.data.size[0] === 'One Size') {
-    oneSize = 'One Size';
+    oneSize = 'One Size'
   }
   //Determines placeholder value for dropdown menu.
   let placeholderValue = oneSize || 'Select a Size'
@@ -38,4 +38,4 @@ var SizeMenu = (props) => {
   )
 }
 
-export default SizeMenu;
+export default SizeMenu

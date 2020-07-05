@@ -1,13 +1,13 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost:27017/fjall_raven', {useNewUrlParser: true, useUnifiedTopology: true} )
 
 
 const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
+db.on('error', console.error.bind(console, 'connection error:'))
 db.once('open', function() {
   // we're connected!
   console.log('Database is running...')
-});
+})
 
 let productSchema = new mongoose.Schema({
   productId: Number,
@@ -24,14 +24,14 @@ let productSchema = new mongoose.Schema({
   image: [String]
 })
 
-let Product = mongoose.model("Product", productSchema);
+let Product = mongoose.model("Product", productSchema)
 
 //--------------------------------------------------------------------
 //Populates database with mock data - un-comment module.exports below
 // let build = (data, callback) => {
-//   console.log(data[0].name);
-//   var collection = [];
-//   var count = 1;
+//   console.log(data[0].name)
+//   var collection = []
+//   var count = 1
 //   data.forEach(function(data) {
 
 //     var newProduct = new Product({
@@ -93,6 +93,15 @@ var getProducts = (callback) => {
   })
 }
 
+// use to populate db with mock data
+// db.build(sample.data, (err, data) => {
+//   if (err) {
+//     console.log(err)
+//   } else {
+//     console.log(data)
+//   }
+// })
+
 // module.exports.build = build;
-module.exports.getProducts = getProducts;
+module.exports.getProducts = getProducts
 

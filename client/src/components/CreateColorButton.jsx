@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
 //generates and styles button from props passed down from <Colors/>
 
@@ -134,7 +134,7 @@ var CreateColorButton = (props) => {
   const Color = props.item.color;
 
   return(
-    
+
     <StyleButtonBorder onClick={() => props.getCurrentProduct(props.item)}  onMouseEnter={() => props.colorHoverOn(Color)} onMouseLeave={() => props.colorHoverOff()}>
       <Button className="colored-button" data={Color}></Button>
     </StyleButtonBorder>

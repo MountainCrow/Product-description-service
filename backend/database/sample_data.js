@@ -1319,4 +1319,4 @@ module.exports.data =
 			"color": "550 - Black",
 			"url": ["https://hrphxfec.s3-us-west-1.amazonaws.com/snowflake+parka/snowflake_black.jpg"]
 		}
-	];
+	]

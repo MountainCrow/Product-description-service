@@ -170,4 +170,4 @@ var Price_Block = (props) => {
   )
 }
 
-export default Price_Block;
+export default Price_Block

@@ -21,7 +21,7 @@ describe("Component testing for <CreateImageCell/>", () => {
         image: ["https://hrphxfec.s3-us-west-1.amazonaws.com/Kanken+Laptop+13/kanken_acorn.jpg"]
       }
     }
-  };
+  }
 
   test("<CreateImageCell/> should render", () => {
 

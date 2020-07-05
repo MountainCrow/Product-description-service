@@ -1,8 +1,8 @@
-import React from 'react';
-import { shallow, mount, render } from 'enzyme';
+import React from 'react'
+import { shallow, mount, render } from 'enzyme'
 import renderer from 'react-test-renderer'
-import App from '../src/components/App.jsx';
-import Carousel from '../src/components/Carousel.jsx';
+import App from '../src/components/App.jsx'
+import Carousel from '../src/components/Carousel.jsx'
 
 describe("Component testing for <Carousel/>", () => {
 
@@ -22,7 +22,7 @@ describe("Component testing for <Carousel/>", () => {
         image: ["https://hrphxfec.s3-us-west-1.amazonaws.com/Kanken+Laptop+13/kanken_acorn.jpg"]
       }
     }
-  };
+  }
 
   test("<Carousel/> should render", async () => {
 

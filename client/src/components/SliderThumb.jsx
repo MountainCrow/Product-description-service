@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import CreateImageCell from './CreateImageCell.jsx';
+import React from 'react'
+import styled from 'styled-components'
+import CreateImageCell from './CreateImageCell.jsx'
 
 //Creates thumbnail images for carousel - props are passed down from <Carousel/>
 var SliderThumb = (props) => {
@@ -14,4 +14,4 @@ var SliderThumb = (props) => {
   )
 }
 
-export default SliderThumb;
+export default SliderThumb

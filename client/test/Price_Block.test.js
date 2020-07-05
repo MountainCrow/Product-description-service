@@ -21,7 +21,7 @@ describe("Component testing for <Price_Block/>", () => {
         image: ["https://hrphxfec.s3-us-west-1.amazonaws.com/Kanken+Laptop+13/kanken_acorn.jpg"]
       }
     }
-  };
+  }
 
   test("<Price_Block/> should render", () => {
 
