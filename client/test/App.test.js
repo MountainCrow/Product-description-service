@@ -6,6 +6,6 @@ describe('Component testing for <App />', () => {
 
   test("<App/> should render", async () => {
     const wrapper = await shallow(<App/>)
-    expect(wrapper)
+    await expect(wrapper)
   })
 })

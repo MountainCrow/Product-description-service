@@ -1,5 +1,6 @@
 import React from 'react'
 import { shallow, mount, render} from 'enzyme'
+import renderer from 'react-test-renderer'
 import CreateColorButton from '../src/components/CreateColorButton.jsx'
 
 describe("Component testing for <CreateColorButton/>", () => {
@@ -24,13 +25,13 @@ describe("Component testing for <CreateColorButton/>", () => {
 
   test("<CreateColorButton should render", () => {
 
-    const wrapper = shallow(<CreateColorButton {...props}/>)
+    const wrapper = render(<CreateColorButton {...props}/>)
     expect(wrapper)
   })
 
-  test("Color should equal '166 - Acorn'", () => {
+  test("Color should not change based on mock props", () => {
 
-    const wrapper = shallow(<CreateColorButton {...props}/>)
+    const tree = shallow(<CreateColorButton {...props}/>)
     expect(wrapper.find('.colored-button').prop('props.data')).toBe("166 - Acorn")
   })
 })
