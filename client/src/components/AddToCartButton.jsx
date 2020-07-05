@@ -66,6 +66,7 @@ const StyledPlusCircleWrapper = styled.span`
   top: 25px;
   transition-duration: .2s;
   transition-timing-function: ease-in-out;
+  border: none;
 `;
 
 const StyledPlusCircleIcon = styled.i`
@@ -119,7 +120,7 @@ const ActiveStyledPlusCircleWrapper = styled.span`
   border-radius: 50%;
   position: absolute;
   left: 47px;
-  top: 25px;
+  top: 24px;
 `;
 
 const ActiveStyledPlusCircleIcon = styled.i`
