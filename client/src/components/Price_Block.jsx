@@ -33,7 +33,7 @@ const Heading = styled.h1`
 
 const SubHeadingWrapper = styled.div`
   display: flex;
-  width: 90%;
+  width: 100%;
 `;
 
 const Gender = styled.div`
@@ -44,11 +44,11 @@ const Gender = styled.div`
   line-height: 30px;
   text-align: left;
   text-size-adjust: 100%;
-  width: 50px;
-  padding-left: 6.2%;
+  width: 50%;
+  padding-left: 5%;
 `;
 
-const Style = styled.div`
+const Style = styled.span`
   font-size: 12px;
   color: #707070;
   font-weight: 400;
@@ -56,16 +56,16 @@ const Style = styled.div`
   line-height: 30px;
   text-align: left;
   text-size-adjust: 100%;
-  width: 90%;
-  padding-left: 1%;
+  width: 100px;
+  padding-left: 2%;
 `;
 
-const StyledRating = styled.div`
+const StyledRating = styled.span`
   line-height: 30px;
   text-size-adjust: 100%;
-  width: 100%;
-  padding-left: 35%;
-  padding-bottom: 2px;
+  width: 30px;
+  padding-left: 70.5px;
+  padding-bottom: 5px;
 `;
 
 const Price = styled.span`
@@ -182,8 +182,7 @@ var Price_Block = (props) => {
         <Heading className="heading">{props.data.currentProduct.name}</Heading>
 
         <SubHeadingWrapper>
-          <Gender className="gender">{props.data.currentProduct.gender}</Gender>
-          <Style className="style">{props.data.currentProduct.style}</Style>
+          <Gender className="gender">{props.data.currentProduct.gender}<Style className="style">{props.data.currentProduct.style}</Style></Gender>
           <StyledRating><StarRating data={props.data.currentProduct}></StarRating></StyledRating>
         </SubHeadingWrapper>
 
@@ -192,7 +191,7 @@ var Price_Block = (props) => {
 
       <Description>{props.data.currentProduct.description}</Description>
       <ReadMoreWrapper><StyledReadMore className='read-more'>Read More<StyledChevron className='read-more-chevron'><MdChevronRight/></StyledChevron></StyledReadMore></ReadMoreWrapper>
-      
+
       <ColorButtonWrapper>
         <Colors data={props.data} getCurrentProduct={props.getCurrentProduct}/>
         <StyledMenu><SizeMenu data={props.data.currentProduct} /></StyledMenu>
