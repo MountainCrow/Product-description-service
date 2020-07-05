@@ -4,6 +4,7 @@ import Colors from './Colors.jsx'
 import StarRating from './StarRating.jsx'
 import {FaShoppingBag} from 'react-icons/fa'
 import {FaPlusCircle} from 'react-icons/fa'
+import {MdChevronRight} from 'react-icons/md'
 import styled from 'styled-components'
 
 const PriceBlockWrapper = styled.div`
@@ -92,6 +93,40 @@ const Description = styled.p`
   padding-left: 5%;
 `;
 
+const ReadMoreWrapper = styled.div`
+  padding-left: 5%;
+  position: relative;
+  height: 35px;
+  width: 100px;
+
+  &:hover {
+    .read-more {
+      color: #cc1618;
+    };
+    .read-more-chevron {
+      transform: translateX(10px);
+      transition-duration: .2s;
+      transition-timing-function: ease-in-out;
+    }
+  }
+`;
+
+const StyledReadMore = styled.div`
+  padding-top: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #303030;
+`;
+
+const StyledChevron = styled.i`
+  top: 1.2px;
+  font-size: 25px;
+  color: #cc1618;
+  position: absolute;
+  transition-duration: .2s;
+  transition-timing-function: ease-in-out;
+`;
+
 const ColorButtonWrapper = styled.div`
   box-sizing: border-box;
   display: block;
@@ -119,25 +154,22 @@ const Button = styled.button`
   font-weight: 700;
   font-stretch: 100%;
   letter-spacing: 0.42px;
-  line-height: 35px;
-  padding-top: 12px;
-  padding-bottom: 12px;
+  line-height: 30px;
+  padding: 12px 25px 12px 25px;
   border-radius: 4px;
   border: 0;
-  justify-content: center;
-  vertical-align: middle;
+  outline: none;
   cursor: pointer
-  padding-left: 25px;
-  padding-right: 25px;
   width: 45%;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 2px 0;
-  outline: none;
+  transition-duration: .2s;
+  transition-timing-function: ease-in-out;
 
   &:hover {
-    transition-delay: 0s;
-    transition-duration: 0.2s;
-    transition-property: box-shadow, transform, background, color;
-    transition-timing-function: ease;
+    transform: translateY(-3px);
+    transition-duration: .2s;
+    transition-timing-function: ease-in-out;
+    box-shadow: rgba(0, 0, 0, .3) 0px 2px 2px 0;
   }
 `;
 //main component that renders an add to cart button and product details pertaining to name, gender, price, description, color, and size.
@@ -158,8 +190,9 @@ var Price_Block = (props) => {
         <Price className="price">${props.data.currentProduct.price}</Price>
       </ContentHeader>
 
-      <Description>{props.data.currentProduct.description}<span style={{paddingLeft: '7px', fontSize: '14px', fontWeight: 'bold', color: '#303030'}}>Read More<span style={{paddingLeft: '5px', fontSize: '14px', fontWeight: '900', color: '#cc1618', fontFamily: "sans-serif"}}>></span></span></Description>
-
+      <Description>{props.data.currentProduct.description}</Description>
+      <ReadMoreWrapper><StyledReadMore className='read-more'>Read More<StyledChevron className='read-more-chevron'><MdChevronRight/></StyledChevron></StyledReadMore></ReadMoreWrapper>
+      
       <ColorButtonWrapper>
         <Colors data={props.data} getCurrentProduct={props.getCurrentProduct}/>
         <StyledMenu><SizeMenu data={props.data.currentProduct} /></StyledMenu>
