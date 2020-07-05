@@ -1,5 +1,6 @@
 import React from 'react'
 import { shallow, mount, render } from 'enzyme'
+import renderer from 'react-test-renderer'
 import SliderThumb from '../src/components/SliderThumb.jsx'
 
 describe("Component testing for <SliderThumb/>", () => {
@@ -12,5 +13,11 @@ describe("Component testing for <SliderThumb/>", () => {
 
     const wrapper = shallow(<SliderThumb {...props}/>)
     expect(wrapper)
+  })
+
+  test("<SliderThumb/> snapshot", () => {
+
+    const tree = renderer.create(<SliderThumb {...props}/>).toJSON()
+    expect(tree).toMatchSnapshot()
   })
 })

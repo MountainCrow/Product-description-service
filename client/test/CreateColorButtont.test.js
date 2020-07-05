@@ -29,9 +29,9 @@ describe("Component testing for <CreateColorButton/>", () => {
     expect(wrapper)
   })
 
-  test("Color should not change based on mock props", () => {
+  test("<CreateColorButton/> snapshot", () => {
 
-    const tree = shallow(<CreateColorButton {...props}/>)
-    expect(wrapper.find('.colored-button').prop('props.data')).toBe("166 - Acorn")
+    const tree = renderer.create(<CreateColorButton {...props}/>).toJSON()
+    expect(tree).toMatchSnapshot()
   })
 })

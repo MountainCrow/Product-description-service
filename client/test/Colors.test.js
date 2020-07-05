@@ -1,5 +1,6 @@
 import React from 'react'
 import { shallow, mount, render } from 'enzyme'
+import renderer from 'react-test-renderer'
 import Colors from '../src/components/Colors.jsx'
 
 describe("Component testing for <Colors/>", () => {
@@ -39,5 +40,11 @@ describe("Component testing for <Colors/>", () => {
 
     const wrapper = shallow(<Colors {...props}/>)
     expect(wrapper)
+  })
+
+  test("<Colors/> snapshot", () => {
+
+    const tree = renderer.create(<Colors {...props}/>).toJSON()
+    expect(tree).toMatchSnapshot()
   })
 })

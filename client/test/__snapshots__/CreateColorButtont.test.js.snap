@@ -28,6 +28,19 @@ exports[`Component testing for <CreateColorButton/> <CreateColorButton/> renders
 </span>
 `;
 
+exports[`Component testing for <CreateColorButton/> <CreateColorButton/> snapshot 1`] = `
+<span
+  className="sc-AxirZ hEOhER"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <button
+    className="sc-AxjAm eabuEd colored-button"
+  />
+</span>
+`;
+
 exports[`Component testing for <CreateColorButton/> Color should equal '166 - Acorn' 1`] = `
 <span
   className=""
@@ -38,6 +51,19 @@ exports[`Component testing for <CreateColorButton/> Color should equal '166 - Ac
   <button
     className="colored-button"
     data="166 - Acorn"
+  />
+</span>
+`;
+
+exports[`Component testing for <CreateColorButton/> Color should not change based on mock props 1`] = `
+<span
+  className="sc-AxirZ hEOhER"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <button
+    className="sc-AxjAm eabuEd colored-button"
   />
 </span>
 `;

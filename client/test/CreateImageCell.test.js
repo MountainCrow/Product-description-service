@@ -1,5 +1,6 @@
 import React from 'react'
 import { shallow, mount, render } from 'enzyme'
+import renderer from 'react-test-renderer'
 import CreateImageCell from '../src/components/CreateImageCell.jsx'
 
 describe("Component testing for <CreateImageCell/>", () => {
@@ -26,5 +27,11 @@ describe("Component testing for <CreateImageCell/>", () => {
 
     const wrapper = shallow(<CreateImageCell {...props}/>)
     expect(wrapper)
+  })
+
+  test("<CreateImageCell/> snapshot", () => {
+
+    const tree = renderer.create(<CreateImageCell {...props}/>).toJSON()
+    expect(tree).toMatchSnapshot()
   })
 })

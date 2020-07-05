@@ -1,5 +1,6 @@
 import React from 'react'
 import { shallow, mount, render } from 'enzyme'
+import renderer from 'react-test-renderer'
 import Price_Block from '../src/components/Price_Block.jsx'
 
 describe("Component testing for <Price_Block/>", () => {

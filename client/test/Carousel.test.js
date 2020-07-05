@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow, mount, render } from 'enzyme';
+import renderer from 'react-test-renderer'
 import App from '../src/components/App.jsx';
 import Carousel from '../src/components/Carousel.jsx';
 

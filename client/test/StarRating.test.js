@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow, mount, render } from 'enzyme';
+import renderer from "react-test-renderer"
 import StarRating from '../src/components/StarRating.jsx';
 
 describe("Component testing for <StarRating/>", () => {
@@ -38,5 +39,11 @@ describe("Component testing for <StarRating/>", () => {
 
     const wrapper = shallow(<StarRating {...props}/>)
     expect(wrapper.find('.total-ratings').text()).toBe('(6)')
+  })
+
+  test("<StarRating/> snapshot", () => {
+
+    const tree = renderer.create(<StarRating {...props}/>).toJSON()
+    expect(tree).toMatchSnapshot()
   })
 })

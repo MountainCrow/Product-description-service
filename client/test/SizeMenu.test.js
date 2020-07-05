@@ -1,5 +1,6 @@
 import React from 'react'
 import { shallow, mount, render } from 'enzyme'
+import renderer from 'react-test-renderer'
 import SizeMenu from  '../src/components/SizeMenu.jsx'
 
 describe("Component testing for <SizeMenu/>", () => {
@@ -31,5 +32,11 @@ describe("Component testing for <SizeMenu/>", () => {
 
     const wrapper = shallow(<SizeMenu {...props}/>)
     expect(wrapper.find('.placeholder').text()).toBe('One Size')
+  })
+
+  test("<SizeMenu/> snapshot", () => {
+
+    const tree = renderer.create(<SizeMenu {...props}/>).toJSON()
+    expect(tree).toMatchSnapshot()
   })
 })

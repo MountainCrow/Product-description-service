@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component testing for <Colors/> <Colors/> snapshot 1`] = `
+<div>
+  <div
+    className="sc-AxiKw hKBFOs"
+  >
+    166 - Acorn
+  </div>
+  <div
+    className="sc-AxhCb jAlFeM"
+  >
+    <span
+      className="sc-AxirZ hEOhER"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <button
+        className="sc-AxjAm jWIhmU colored-button"
+        data="166 - Acorn"
+      />
+    </span>
+  </div>
+</div>
+`;
