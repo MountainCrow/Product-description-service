@@ -1,35 +1,26 @@
-const express = require('express');
-const cors = require('cors');
-const morgan = require('morgan');
-const bodyParser = require('body-parser');
-const path = require('path');
+const express = require('express')
+const cors = require('cors')
+const morgan = require('morgan')
+const bodyParser = require('body-parser')
+const path = require('path')
 
-const app = express();
-const db = require('../database/config.js');
+const app = express()
+const db = require('../database/config.js')
 
 const sample = require('../database/sample_data.js')
 
-app.use(cors());
-app.use(morgan('dev'));
-app.use(bodyParser.json());
+app.use(cors())
+app.use(morgan('dev'))
+app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 
-app.use(express.static(path.join(__dirname, '../../client/dist')));
+app.use(express.static(path.join(__dirname, '../../client/dist')))
 
 const corsOptions = {
   origin: 'http://localhost/3000',
   optionSuccessStatus: 200
 }
-
-// use to populate db with mock data
-// db.build(sample.data, (err, data) => {
-//   if (err) {
-//     console.log(err)
-//   } else {
-//     console.log(data)
-//   }
-// })
-
+//calls getProducts function which will query the database
 app.get('/products', (req, res) => {
   db.getProducts((err,data) => {
     if (err) {
@@ -40,12 +31,11 @@ app.get('/products', (req, res) => {
   })
 })
 
-
 /*app.post('/', (req, res) => {
     console.log("POST is working...")
 })*/
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001
 
 app.listen(PORT, () => {
   console.log(`Server is running on PORT: ${PORT}`)

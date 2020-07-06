@@ -1,6 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
+//generates and styles button from props passed down from <Colors/>
+
+//Dynamically styles button based on color property from props
 const Button = styled.button`
   background: ${props => {
     const color = props.data;
@@ -131,7 +134,10 @@ var CreateColorButton = (props) => {
   const Color = props.item.color;
 
   return(
-    <StyleButtonBorder onClick={() => props.getCurrentProduct(props.item)}  onMouseEnter={() => props.colorHoverOn(Color)} onMouseLeave={() => props.colorHoverOff()}><Button data={Color}></Button></StyleButtonBorder>
+
+    <StyleButtonBorder onClick={() => props.getCurrentProduct(props.item)}  onMouseEnter={() => props.colorHoverOn(Color)} onMouseLeave={() => props.colorHoverOff()}>
+      <Button className="colored-button" data={Color}></Button>
+    </StyleButtonBorder>
 
   )
 }

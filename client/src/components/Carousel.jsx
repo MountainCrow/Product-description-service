@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
-import Slider from 'react-slick';
-import SliderThumb from './SliderThumb.jsx';
-import {MdChevronRight} from 'react-icons/md';
-import {MdChevronLeft} from 'react-icons/md';
+import React from 'react'
+import styled from 'styled-components'
+import Slider from 'react-slick'
+import SliderThumb from './SliderThumb.jsx'
+import {MdChevronRight} from 'react-icons/md'
+import {MdChevronLeft} from 'react-icons/md'
 
 const StyledCarouselWrapper = styled.div`
   position: relative;
@@ -41,6 +41,7 @@ const StyledLeftArrow = styled.i`
   font-size: 70px;
   opacity: 50%;
   border-radius: none;
+  cursor: pointer;
 
   &:hover {
     opacity: 100%
@@ -57,6 +58,7 @@ const StyledRightArrow = styled.i`
   font-size: 70px;
   opacity: 50%;
   border-radius: none;
+  cursor: pointer;
 
   &:hover {
     opacity: 100%
@@ -72,19 +74,19 @@ const StyledThumb = styled.div`
   width: 550px;
   z-index: 1;
 `;
-
+//next arrow button
 function SampleNextArrow(props) {
   const { onClick } = props;
   return (
     <StyledRightArrow onClick={onClick}><MdChevronRight/></StyledRightArrow>
-  );
+  )
 }
-
+//prev arrow button
 function SamplePrevArrow(props) {
   const { onClick } = props;
   return (
     <StyledLeftArrow onClick={onClick}><MdChevronLeft/></StyledLeftArrow>
-  );
+  )
 }
 
 class Carousel extends React.Component {
@@ -93,20 +95,30 @@ class Carousel extends React.Component {
     super(props)
 
     this.state = {
-      images: this.props.data.currentProduct.image
+      images: this.props.data.currentProduct.image,
+      activeSlide: 0
     }
-  }
 
+    this.updateActiveSlide = this.updateActiveSlide.bind(this)
+  }
+  //updates states if currentProduct has changed
   componentDidUpdate(prevProps) {
-    if (prevProps !== this.props) {
+    console.log("TEST: ", prevProps.data.currentProduct === this.props.data.currentProduct)
+    if (prevProps.data.currentProduct !== this.props.data.currentProduct) {
       this.setState({
         images: this.props.data.currentProduct.image,
+        activeSlide: 0
       })
     }
+  }
+  //sets the current view of the carousel to the argument
+  updateActiveSlide(index) {
+    this.slider.slickGoTo(index)
   }
 
   render() {
 
+    //maps through images array in order render to carousel
     let SliderImage = this.state.images.map((image, index) => (
       <StyledImageContainer key={index}><StyledImage src={image}/></StyledImageContainer>
     ))
@@ -114,23 +126,26 @@ class Carousel extends React.Component {
     const settings = {
       dots: false,
       infinite: false,
-      speed: 500,
+      speed: 300,
       slidesToShow: 1,
       slidesToScroll: 1,
-      lazyLoad: true,
+      lazyLoad: false,
       initialSlide: 0,
       nextArrow: <SampleNextArrow />,
-      prevArrow: <SamplePrevArrow />
-    };
+      prevArrow: <SamplePrevArrow />,
+      afterChange: current => this.setState({ activeSlide: current })
+    }
+
     return (
       <StyledCarouselWrapper>
         <StyledCarousel>
-          <Slider {...settings}>{SliderImage}</Slider>
+          <Slider ref={c => (this.slider = c)} {...settings}>{SliderImage}</Slider>
         </StyledCarousel>
-        <div><StyledThumb><SliderThumb product={this.state.images}/></StyledThumb></div>
+        <div><StyledThumb><SliderThumb updateActiveSlide={this.updateActiveSlide} product={this.state}/></StyledThumb></div>
       </StyledCarouselWrapper>
     )
   }
 }
 
-export default Carousel;
+export default Carousel
+

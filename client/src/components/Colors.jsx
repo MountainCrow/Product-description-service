@@ -1,6 +1,6 @@
-import React from 'react';
-import CreateColorButton from './CreateColorButton.jsx';
-import styled from 'styled-components';
+import React from 'react'
+import CreateColorButton from './CreateColorButton.jsx'
+import styled from 'styled-components'
 
 const StyledLabel = styled.div`
   padding-bottom: 5px;
@@ -68,4 +68,4 @@ class Colors extends React.Component {
   }
 }
 
-export default Colors;
+export default Colors

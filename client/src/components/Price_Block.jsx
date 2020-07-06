@@ -2,8 +2,8 @@ import React from 'react'
 import SizeMenu from './SizeMenu.jsx'
 import Colors from './Colors.jsx'
 import StarRating from './StarRating.jsx'
-import {FaShoppingBag} from 'react-icons/fa'
-import {FaPlusCircle} from 'react-icons/fa'
+import AddToCartButton from './AddToCartButton.jsx'
+import {MdChevronRight} from 'react-icons/md'
 import styled from 'styled-components'
 
 const PriceBlockWrapper = styled.div`
@@ -27,12 +27,12 @@ const Heading = styled.h1`
   text-align: left;
   text-size-adjust: 100%;
   width: 90%;
-  padding-left: 5%;
+  padding-left: 7%;
 `;
 
 const SubHeadingWrapper = styled.div`
   display: flex;
-  width: 90%;
+  width: 100%;
 `;
 
 const Gender = styled.div`
@@ -43,11 +43,11 @@ const Gender = styled.div`
   line-height: 30px;
   text-align: left;
   text-size-adjust: 100%;
-  width: 50px;
-  padding-left: 6.2%;
+  width: 50%;
+  padding-left: 7%;
 `;
 
-const Style = styled.div`
+const Style = styled.span`
   font-size: 12px;
   color: #707070;
   font-weight: 400;
@@ -55,16 +55,16 @@ const Style = styled.div`
   line-height: 30px;
   text-align: left;
   text-size-adjust: 100%;
-  width: 90%;
-  padding-left: 1%;
+  width: 100px;
+  padding-left: 2%;
 `;
 
-const StyledRating = styled.div`
+const StyledRating = styled.span`
   line-height: 30px;
   text-size-adjust: 100%;
-  width: 100%;
-  padding-left: 35%;
-  padding-bottom: 2px;
+  width: 30px;
+  padding-left: 70.5px;
+  padding-bottom: 5px;
 `;
 
 const Price = styled.span`
@@ -76,20 +76,55 @@ const Price = styled.span`
   margin-top: 10px;
   text-size-adjust: 100%;
   width: 100%;
-  padding-left: 5%;
+  padding-left: 7%;
 `;
 
 const Description = styled.p`
-  font-size: 14px;
+  font-size: 16px;
   color: #303030;
-  font-weight: 400;
+  font-weight: 300;
   letter-spacing: 0.42px;
   line-height: 21px;
   margin: 0px;
   text-align: left;
   text-size-adjust: 100%;
   width: 85%;
-  padding-left: 5%;
+  padding-left: 7%;
+`;
+
+const ReadMoreWrapper = styled.div`
+  padding-left: 7%;
+  position: relative;
+  height: 35px;
+  width: 100px;
+
+  &:hover {
+    cursor: pointer;
+    .read-more {
+      color: #cc1618;
+    };
+    .read-more-chevron {
+      transform: translateX(10px);
+      transition-duration: .2s;
+      transition-timing-function: ease-in-out;
+    }
+  }
+`;
+
+const StyledReadMore = styled.div`
+  padding-top: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #303030;
+`;
+
+const StyledChevron = styled.i`
+  top: 3px;
+  font-size: 25px;
+  color: #cc1618;
+  position: absolute;
+  transition-duration: .2s;
+  transition-timing-function: ease-in-out;
 `;
 
 const ColorButtonWrapper = styled.div`
@@ -102,72 +137,45 @@ const ColorButtonWrapper = styled.div`
   text-align: left;
   text-size-adjust: 100%;
   width: 90%;
-  padding-left: 5%;
+  padding-left: 7%;
   padding-top: 25px;
 `;
 
 const StyledMenu = styled.div`
+  margin-top: 10px;
   padding-top: 12px;
   padding-bottom: 5px;
   width: 45%;
 `;
 
-const Button = styled.button`
-  background: #cc1618;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 700;
-  font-stretch: 100%;
-  letter-spacing: 0.42px;
-  line-height: 35px;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  border-radius: 4px;
-  border: 0;
-  justify-content: center;
-  vertical-align: middle;
-  cursor: pointer
-  padding-left: 25px;
-  padding-right: 25px;
-  width: 45%;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 2px 0;
-  outline: none;
-
-  &:hover {
-    transition-delay: 0s;
-    transition-duration: 0.2s;
-    transition-property: box-shadow, transform, background, color;
-    transition-timing-function: ease;
-  }
-`;
-
+//main component that renders an add to cart button and product details pertaining to name, gender, price, description, color, and size.
 var Price_Block = (props) => {
 
   return(
     <PriceBlockWrapper>
 
       <ContentHeader>
-        <Heading>{props.data.currentProduct.name}</Heading>
+        <Heading className="heading">{props.data.currentProduct.name}</Heading>
 
         <SubHeadingWrapper>
-          <Gender>{props.data.currentProduct.gender}</Gender>
-          <Style>{props.data.currentProduct.style}</Style>
+          <Gender className="gender">{props.data.currentProduct.gender}<Style className="style">{props.data.currentProduct.style}</Style></Gender>
           <StyledRating><StarRating data={props.data.currentProduct}></StarRating></StyledRating>
         </SubHeadingWrapper>
 
-        <Price>${props.data.currentProduct.price}</Price>
+        <Price className="price">${props.data.currentProduct.price}</Price>
       </ContentHeader>
 
-      <Description>{props.data.currentProduct.description}<span style={{paddingLeft: '7px', fontSize: '14px', fontWeight: 'bold', color: '#303030'}}>Read More<span style={{paddingLeft: '5px', fontSize: '14px', fontWeight: '900', color: '#cc1618', fontFamily: "sans-serif"}}>></span></span></Description>
+      <Description>{props.data.currentProduct.description}</Description>
+      <ReadMoreWrapper><StyledReadMore className='read-more'>Read More<StyledChevron className='read-more-chevron'><MdChevronRight/></StyledChevron></StyledReadMore></ReadMoreWrapper>
 
       <ColorButtonWrapper>
         <Colors data={props.data} getCurrentProduct={props.getCurrentProduct}/>
         <StyledMenu><SizeMenu data={props.data.currentProduct} /></StyledMenu>
-        <Button onClick={() => props.addToCart(props.data.currentProduct.price)} >{<FaShoppingBag/>} ADD TO CART</Button>
+        <AddToCartButton price={props.data.currentProduct.price} addToCart={props.addToCart}/>
       </ColorButtonWrapper>
 
     </PriceBlockWrapper>
   )
 }
 
-export default Price_Block;
+export default Price_Block

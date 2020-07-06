@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component testing for <SliderThumb/> <SliderThumb/> snapshot 1`] = `
+<div
+  className="slider-thumb"
+>
+  <img
+    className="sc-AxjAm jLqTMr"
+    src="https://hrphxfec.s3-us-west-1.amazonaws.com/Kanken+Laptop+13/kanken_acorn.jpg"
+  />
+</div>
+`;
