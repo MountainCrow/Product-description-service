@@ -939,7 +939,7 @@ module.exports.data =
 			"style": "Style # F89892",
 			"size": ["XXS", "XS", "S", "M", "L", "XL", "XXL"],
 			"color": "356-420 - Dark Garnet-Plum",
-			"url": ["https://hrphxfec.s3-us-west-1.amazonaws.com/keb+jacket+w/kebW_black2.jpg", "https://hrphxfec.s3-us-west-1.amazonaws.com/keb+jacket+w/kebW_dark-plum2.jpg"]
+			"url": ["https://hrphxfec.s3-us-west-1.amazonaws.com/keb+jacket+w/kebW_dark-plum.jpg", "https://hrphxfec.s3-us-west-1.amazonaws.com/keb+jacket+w/kebW_dark-plum2.jpg"]
 		},
 		{
 			"name": "KEB JACKET W",

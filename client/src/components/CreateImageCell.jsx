@@ -7,6 +7,7 @@ const StyledThumb = styled.img`
   height: 60px;
   background: #fff;
   margin: 5px;
+  cursor: pointer;
   border: ${props => {
     if (props.props.index === props.props.activeCell) {
       return '1px solid black'

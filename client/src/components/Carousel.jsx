@@ -41,6 +41,7 @@ const StyledLeftArrow = styled.i`
   font-size: 70px;
   opacity: 50%;
   border-radius: none;
+  cursor: pointer;
 
   &:hover {
     opacity: 100%
@@ -57,6 +58,7 @@ const StyledRightArrow = styled.i`
   font-size: 70px;
   opacity: 50%;
   border-radius: none;
+  cursor: pointer;
 
   &:hover {
     opacity: 100%
@@ -72,14 +74,14 @@ const StyledThumb = styled.div`
   width: 550px;
   z-index: 1;
 `;
-
+//next arrow button
 function SampleNextArrow(props) {
   const { onClick } = props;
   return (
     <StyledRightArrow onClick={onClick}><MdChevronRight/></StyledRightArrow>
   )
 }
-
+//prev arrow button
 function SamplePrevArrow(props) {
   const { onClick } = props;
   return (
@@ -94,36 +96,29 @@ class Carousel extends React.Component {
 
     this.state = {
       images: this.props.data.currentProduct.image,
-      activeSlide: 0,
+      activeSlide: 0
     }
 
     this.updateActiveSlide = this.updateActiveSlide.bind(this)
   }
-
+  //updates states if currentProduct has changed
   componentDidUpdate(prevProps) {
-    if (prevProps !== this.props) {
+    console.log("TEST: ", prevProps.data.currentProduct === this.props.data.currentProduct)
+    if (prevProps.data.currentProduct !== this.props.data.currentProduct) {
       this.setState({
         images: this.props.data.currentProduct.image,
         activeSlide: 0
       })
     }
   }
-
-
-
-  // previous() {
-  //   this.slider.slickPrev()
-  // }
-
+  //sets the current view of the carousel to the argument
   updateActiveSlide(index) {
-
     this.slider.slickGoTo(index)
   }
 
-
   render() {
-    console.log("TESSSSSSSSSSSST: ", this.state.activeSlide)
 
+    //maps through images array in order render to carousel
     let SliderImage = this.state.images.map((image, index) => (
       <StyledImageContainer key={index}><StyledImage src={image}/></StyledImageContainer>
     ))
@@ -131,14 +126,14 @@ class Carousel extends React.Component {
     const settings = {
       dots: false,
       infinite: false,
-      speed: 500,
+      speed: 300,
       slidesToShow: 1,
       slidesToScroll: 1,
       lazyLoad: false,
       initialSlide: 0,
       nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />,
-      beforeChange: (current, next) => this.setState({ activeSlide: next }),
+      afterChange: current => this.setState({ activeSlide: current })
     }
 
     return (

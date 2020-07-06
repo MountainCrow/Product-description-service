@@ -54,7 +54,6 @@ class App extends React.Component {
     this.setState({
       totalPrice: this.state.totalPrice + newTotal
     }, () => {console.log("totalPrice: ", this.state.totalPrice)})
-    //Post request
   }
 
   render() {
