@@ -94,9 +94,8 @@ class Carousel extends React.Component {
 
     this.state = {
       images: this.props.data.currentProduct.image,
-      currentImage: ''
+      activeSlide: 0,
     }
-
   }
 
   componentDidUpdate(prevProps) {
@@ -108,7 +107,7 @@ class Carousel extends React.Component {
   }
 
   render() {
-
+  
     let SliderImage = this.state.images.map((image, index) => (
       <StyledImageContainer key={index}><StyledImage src={image}/></StyledImageContainer>
     ))
@@ -122,14 +121,16 @@ class Carousel extends React.Component {
       lazyLoad: true,
       initialSlide: 0,
       nextArrow: <SampleNextArrow />,
-      prevArrow: <SamplePrevArrow />
-    };
+      prevArrow: <SamplePrevArrow />,
+      beforeChange: (current, next) => this.setState({ activeSlide: next }),
+    }
+
     return (
       <StyledCarouselWrapper>
         <StyledCarousel>
           <Slider {...settings}>{SliderImage}</Slider>
         </StyledCarousel>
-        <div><StyledThumb><SliderThumb product={this.state.images}/></StyledThumb></div>
+        <div><StyledThumb><SliderThumb product={this.state}/></StyledThumb></div>
       </StyledCarouselWrapper>
     )
   }

@@ -177,7 +177,7 @@ class AddToCartButton extends React.Component {
         this.setState({
           toggle: false
         })
-      }, 8000)
+      }, 5000)
     }
   }
 
