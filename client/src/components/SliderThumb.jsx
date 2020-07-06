@@ -10,7 +10,7 @@ const StyledImageThumbnail = styled.div`
 var SliderThumb = (props) => {
   //map through props images and set key/image for CreateImageCell component. ImageThumbnail will render below with returned images.
   const ImageThumbnail = props.product.images.map((imageSource, index) => (
-    <CreateImageCell key={index} index={index} imageSource={imageSource} activeCell={props.product.activeSlide}/>
+    <CreateImageCell key={index} index={index} imageSource={imageSource} activeCell={props.product.activeSlide} updateActiveSlide={props.updateActiveSlide}/>
   ))
 
   return(

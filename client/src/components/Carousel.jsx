@@ -96,18 +96,34 @@ class Carousel extends React.Component {
       images: this.props.data.currentProduct.image,
       activeSlide: 0,
     }
+
+    this.updateActiveSlide = this.updateActiveSlide.bind(this)
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps !== this.props) {
       this.setState({
         images: this.props.data.currentProduct.image,
+        activeSlide: 0
       })
     }
   }
 
+
+
+  // previous() {
+  //   this.slider.slickPrev()
+  // }
+
+  updateActiveSlide(index) {
+
+    this.slider.slickGoTo(index)
+  }
+
+
   render() {
-  
+    console.log("TESSSSSSSSSSSST: ", this.state.activeSlide)
+
     let SliderImage = this.state.images.map((image, index) => (
       <StyledImageContainer key={index}><StyledImage src={image}/></StyledImageContainer>
     ))
@@ -118,7 +134,7 @@ class Carousel extends React.Component {
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
-      lazyLoad: true,
+      lazyLoad: false,
       initialSlide: 0,
       nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />,
@@ -128,9 +144,9 @@ class Carousel extends React.Component {
     return (
       <StyledCarouselWrapper>
         <StyledCarousel>
-          <Slider {...settings}>{SliderImage}</Slider>
+          <Slider ref={c => (this.slider = c)} {...settings}>{SliderImage}</Slider>
         </StyledCarousel>
-        <div><StyledThumb><SliderThumb product={this.state}/></StyledThumb></div>
+        <div><StyledThumb><SliderThumb updateActiveSlide={this.updateActiveSlide} product={this.state}/></StyledThumb></div>
       </StyledCarouselWrapper>
     )
   }

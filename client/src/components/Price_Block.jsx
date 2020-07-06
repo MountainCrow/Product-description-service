@@ -119,7 +119,7 @@ const StyledReadMore = styled.div`
 `;
 
 const StyledChevron = styled.i`
-  top: 1.1px;
+  top: 3px;
   font-size: 25px;
   color: #cc1618;
   position: absolute;

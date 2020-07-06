@@ -18,7 +18,7 @@ const StyledThumb = styled.img`
 const CreateImageCell = (props) => {
 
   return(
-    <StyledThumb className={`thumbnail-${props.index}`} props={props} src={props.imageSource}></StyledThumb>
+    <StyledThumb className={`thumbnail-${props.index}`} props={props} src={props.imageSource} onClick={() => props.updateActiveSlide(props.index)}></StyledThumb>
   )
 }
 
