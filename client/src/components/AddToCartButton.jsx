@@ -170,7 +170,7 @@ class AddToCartButton extends React.Component {
 
     this.afterClick = this.afterClick.bind(this)
   }
-
+  //sets the button's alternate rendering for only 5 seconds
   componentDidUpdate(prevProps) {
     if (prevProps !== this.props && this.state.toggle === true) {
       setTimeout(() => {
@@ -180,7 +180,7 @@ class AddToCartButton extends React.Component {
       }, 5000)
     }
   }
-
+  //toggle prop in state sets to true initiating setTimout func in componentDiDUpdate()
   afterClick(productPrice) {
     this.setState({
       toggle: true

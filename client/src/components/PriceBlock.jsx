@@ -149,12 +149,13 @@ const StyledMenu = styled.div`
 `;
 
 //main component that renders an add to cart button and product details pertaining to name, gender, price, description, color, and size.
-var Price_Block = (props) => {
+var PriceBlock = (props) => {
 
   return(
     <PriceBlockWrapper>
 
       <ContentHeader>
+        
         <Heading className="heading">{props.data.currentProduct.name}</Heading>
 
         <SubHeadingWrapper>
@@ -178,4 +179,4 @@ var Price_Block = (props) => {
   )
 }
 
-export default Price_Block
+export default PriceBlock

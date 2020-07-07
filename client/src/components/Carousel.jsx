@@ -136,7 +136,7 @@ class Carousel extends React.Component {
       initialSlide: 0,
       nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />,
-      key: this.state.key,
+      key: this.state.key, //non-native setting needed to ensure slider renders properly after update
       afterChange: current => this.setState({ activeSlide: current })
     }
 

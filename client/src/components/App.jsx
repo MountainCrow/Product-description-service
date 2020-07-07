@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import Carousel from './Carousel.jsx'
-import Price_Block from'./Price_Block.jsx'
+import PriceBlock from'./PriceBlock.jsx'
 import SliderThumb from './SliderThumb.jsx'
 import styled from 'styled-components'
 
@@ -62,7 +62,7 @@ class App extends React.Component {
         <div >
           <MainWrapper>
             <Carousel data={this.state} />
-            <Price_Block addToCart={this.addToCart} getCurrentProduct={this.getCurrentProduct} data={this.state}/>
+            <PriceBlock addToCart={this.addToCart} getCurrentProduct={this.getCurrentProduct} data={this.state}/>
           </MainWrapper>
         </div>
       )
