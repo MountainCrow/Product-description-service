@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost:27017/fjall_raven', {useNewUrlParser: true, useUnifiedTopology: true} )
 
+const sample = require('./sample_data.js')
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'))
@@ -27,40 +28,40 @@ let productSchema = new mongoose.Schema({
 let Product = mongoose.model("Product", productSchema)
 
 //--------------------------------------------------------------------
-//Populates database with mock data - un-comment module.exports below
-// let build = (data, callback) => {
-//   console.log(data[0].name)
-//   var collection = []
-//   var count = 1
-//   data.forEach(function(data) {
+//Populates database with mock data
+//NOTE: Original image links will not be accessible and new images will need to be sourced
+let build = (data, callback) => {
+  console.log(data[0].name)
+  var collection = []
+  var count = 1
+  data.forEach(function(data) {
 
-//     var newProduct = new Product({
-//       productId: count,
-//       name: data.name,
-//       type: data.type,
-//       price: data.price,
-//       description: data.description,
-//       rating: data.userRating,
-//       totalRatings: data.totalRatings,
-//       gender: data.gender,
-//       style: data.style,
-//       size: data.size,
-//       color: data.color,
-//       image: data.url
-//     })
-//     count = count + 1;
-//     collection.push(newProduct);
-//   })
+    var newProduct = new Product({
+      productId: count,
+      name: data.name,
+      type: data.type,
+      price: data.price,
+      description: data.description,
+      rating: data.userRating,
+      totalRatings: data.totalRatings,
+      gender: data.gender,
+      style: data.style,
+      size: data.size,
+      color: data.color,
+      image: data.url
+    })
+    count = count + 1;
+    collection.push(newProduct);
+  })
 
-//   Product.insertMany(collection)
-//   .then((res) => {
-//     callback(null, res)
-//   })
-//   .catch((err) => {
-//     callback(err, null)
-//   })
-// }
-// -------------------------------------------------------------------
+  Product.insertMany(collection)
+  .then((res) => {
+    callback(null, res)
+  })
+  .catch((err) => {
+    callback(err, null)
+  })
+}
 
 var getProducts = (callback) => {
 
@@ -69,10 +70,10 @@ var getProducts = (callback) => {
   const backpacks = ['KANKEN LAPTOP 13\"', 'RAVEN 28','TOTEPACK NO.1']
   const jackets = ['YUPIK PARKA M', 'STEN JACKET M', 'KAIPAK JACKET M', 'GREENLAND DOWN LINER JACKET M', 'STINA JACKET W', 'KEB JACKET W', 'SINGI DOWN JACKET W', 'NUUK PARKA W']
 
+  let randomProduct = ''
+
   let randProductType = productType[Math.floor(Math.random() * 3)]
   console.log(randProductType)
-
-  let randomProduct = 'RAVEN 28'
 
   if (randProductType === 'backpack') {
     randomProduct = backpacks[Math.floor(Math.random() * 3)]
@@ -93,8 +94,8 @@ var getProducts = (callback) => {
   })
 }
 
-// use to populate db with mock data
-// db.build(sample.data, (err, data) => {
+// uncomment in order to populate db with mock data
+// build(sample.data, (err, data) => {
 //   if (err) {
 //     console.log(err)
 //   } else {
@@ -102,6 +103,5 @@ var getProducts = (callback) => {
 //   }
 // })
 
-// module.exports.build = build;
 module.exports.getProducts = getProducts
 

@@ -1,4 +1,4 @@
-
+//Mock data - Image links will not be accessible and new images will need to be sourced
 module.exports.data =
 	[
 		{
@@ -821,7 +821,7 @@ module.exports.data =
 			"style": "Style # F53502",
 			"size": ["One Size"],
 			"color": "525 - UN Blue",
-			"url": ["https://hrphxfec.s3-us-west-1.amazonaws.com/Abisko+Dome+2/abiskoDome3_blue.jpg", "https://hrphxfec.s3-us-west-1.amazonaws.com/Abisko+Dome+2/abiskoDome3_blue2.jpg", "https://hrphxfec.s3-us-west-1.amazonaws.com/Abisko+Dome+2/abiskoDome3_blue3.jpg", "https://hrphxfec.s3-us-west-1.amazonaws.com/Abisko+Dome+2/abiskoDome3_diag.jpg", "https://hrphxfec.s3-us-west-1.amazonaws.com/Abisko+Dome+2/abiskoDome3_diag.jpg"]
+			"url": ["https://hrphxfec.s3-us-west-1.amazonaws.com/Abisko+Dome+2/abiskoDome3_blue.jpg", "https://hrphxfec.s3-us-west-1.amazonaws.com/Abisko+Dome+2/abiskoDome3_blue2.jpg", "https://hrphxfec.s3-us-west-1.amazonaws.com/Abisko+Dome+2/abiskoDome3_blue3.jpg", "https://hrphxfec.s3-us-west-1.amazonaws.com/Abisko+Dome+2/abiskoDome3_diag.jpg"]
 		},
 		{
 			"name": "STINA JACKET W",

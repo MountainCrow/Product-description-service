@@ -7,8 +7,6 @@ const path = require('path')
 const app = express()
 const db = require('../database/config.js')
 
-const sample = require('../database/sample_data.js')
-
 app.use(cors())
 app.use(morgan('dev'))
 app.use(bodyParser.json())
@@ -30,10 +28,6 @@ app.get('/products', (req, res) => {
     }
   })
 })
-
-/*app.post('/', (req, res) => {
-    console.log("POST is working...")
-})*/
 
 const PORT = process.env.PORT || 3001
 
