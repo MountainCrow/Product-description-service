@@ -96,18 +96,21 @@ class Carousel extends React.Component {
 
     this.state = {
       images: this.props.data.currentProduct.image,
-      activeSlide: 0
+      activeSlide: 0,
+      key: this.props.data.currentProduct.color
     }
 
     this.updateActiveSlide = this.updateActiveSlide.bind(this)
   }
   //updates states if currentProduct has changed
+
   componentDidUpdate(prevProps) {
-    console.log("TEST: ", prevProps.data.currentProduct === this.props.data.currentProduct)
+
     if (prevProps.data.currentProduct !== this.props.data.currentProduct) {
       this.setState({
         images: this.props.data.currentProduct.image,
-        activeSlide: 0
+        activeSlide: 0,
+        key: this.props.data.currentProduct.color
       })
     }
   }
@@ -133,6 +136,7 @@ class Carousel extends React.Component {
       initialSlide: 0,
       nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />,
+      key: this.state.key,
       afterChange: current => this.setState({ activeSlide: current })
     }
 
