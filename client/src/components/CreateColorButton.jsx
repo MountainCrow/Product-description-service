@@ -103,6 +103,8 @@ const Button = styled.button`
       return 'rgb(64, 122, 123)'
     } else if (color === '646 - Glacier Green') {
       return 'rgb(0, 70, 79)'
+    } else {
+      return 'rgb(0, 0, 204)'
     }
   }};
   height: 30px;
