@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')
 const path = require('path')
 
 const app = express()
-const db = require('../database/config.js')
+//const db = require('../database/config.js')
 
 app.use(cors())
 app.use(morgan('dev'))
