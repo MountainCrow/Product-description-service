@@ -15,16 +15,18 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.static(path.join(__dirname, '../../client/dist')))
 
 const corsOptions = {
-  origin: 'http://localhost/3000',
+  origin: 'http://localhost/3001',
   optionSuccessStatus: 200
 }
 //calls getProducts function which will query the database
 app.get('/products', (req, res) => {
-  db.getProducts((err,data) => {
+  db.getProducts((err, data) => {
     if (err) {
-      res.send(err)
+      console.log('server had error')
+      res.end()
     } else {
-      res.json(data)
+      console.log('server got: ', data)
+      res.send(data)
     }
   })
 })

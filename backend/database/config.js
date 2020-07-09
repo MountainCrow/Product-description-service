@@ -1,14 +1,31 @@
 const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost:27017/fjall_raven', {useNewUrlParser: true, useUnifiedTopology: true} )
-
 const sample = require('./sample_data.js')
 
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'))
-db.once('open', function() {
-  // we're connected!
-  console.log('Database is running...')
+const { Pool, Client } = require('pg')
+const conString = "postgres://lisamodin:clippy@localhost:5432/fjall_crow";
+
+
+const pool = new Pool({
+  user:'postgres',
+  password:'clippy',
+  host:'localhost',
+  port:'5432',
+  database:'fjall_crow'
 })
+pool.connect()
+  .then(() => {
+    console.log('Connected to fjallcrow DB')
+  })
+  .catch((e) => {
+    console.log('error: ', e)
+  })
+// const db = mongoose.connection;
+// db.on('error', console.error.bind(console, 'connection error:'))
+// db.once('open', function() {
+//   // we're connected!
+//   console.log('Database is running...')
+// })
 
 let productSchema = new mongoose.Schema({
   productId: Number,
@@ -62,11 +79,12 @@ let build = (data, callback) => {
     callback(err, null)
   })
 }
+//  MONGOOSE GET ONE
+// var getProduct = (id) => {
+//   var product = Product.find({productId: id}).lean()
+//   return product;
+// }
 
-var getProduct = (id) => {
-  var product = Product.find({productId: id}).lean()
-  return product;
-}
 
 var updateOne = (id, field, newInfo) => {
   var product = Product.findById(id);
@@ -78,34 +96,47 @@ var removeOne = (id) => {
   var product = Product.findByIdAndRemove(id);
 }
 
-var getProducts = (callback) => {
 
-  const productType = ['backpack', 'jacket', 'tent']
-  const tents = ['KEB DOME', 'ABISKO VIEW', 'ABISKO LITE', 'ABISKO LITE 3', 'ABISKO DOME']
-  const backpacks = ['KANKEN LAPTOP 13\"', 'RAVEN 28','TOTEPACK NO.1']
-  const jackets = ['YUPIK PARKA M', 'STEN JACKET M', 'KAIPAK JACKET M', 'GREENLAND DOWN LINER JACKET M', 'STINA JACKET W', 'KEB JACKET W', 'SINGI DOWN JACKET W', 'NUUK PARKA W']
+// MONGOOSE GET ALL WITH RANDOM GENERATION
+// var getProducts = (callback) => {
+//   const productType = ['backpack', 'jacket', 'tent']
+//   const tents = ['KEB DOME', 'ABISKO VIEW', 'ABISKO LITE', 'ABISKO LITE 3', 'ABISKO DOME']
+//   const backpacks = ['KANKEN LAPTOP 13\"', 'RAVEN 28','TOTEPACK NO.1']
+//   const jackets = ['YUPIK PARKA M', 'STEN JACKET M', 'KAIPAK JACKET M', 'GREENLAND DOWN LINER JACKET M', 'STINA JACKET W', 'KEB JACKET W', 'SINGI DOWN JACKET W', 'NUUK PARKA W']
 
-  let randomProduct = ''
+//   let randomProduct = ''
 
-  let randProductType = productType[Math.floor(Math.random() * 3)]
-  console.log(randProductType)
+//   let randProductType = productType[Math.floor(Math.random() * 3)]
+//   console.log(randProductType)
 
-  if (randProductType === 'backpack') {
-    randomProduct = backpacks[Math.floor(Math.random() * 3)]
-  } else if (randProductType === 'jacket') {
-    randomProduct = jackets[Math.floor(Math.random() * 8)]
-  } else {
-    randomProduct = tents[Math.floor(Math.random() * 5)]
-  }
+//   if (randProductType === 'backpack') {
+//     randomProduct = backpacks[Math.floor(Math.random() * 3)]
+//   } else if (randProductType === 'jacket') {
+//     randomProduct = jackets[Math.floor(Math.random() * 8)]
+//   } else {
+//     randomProduct = tents[Math.floor(Math.random() * 5)]
+//   }
 
-  Product.find({name: randomProduct})
-  .limit() //set to one for now. Will refactor once components are built
-  .exec((err, data) => {
-    if (err) {
-      callback(err, null)
-    } else {
-      callback(null, data)
-    }
+//   Product.find({name: randomProduct})
+//   .limit() //set to one for now. Will refactor once components are built
+//   .exec((err, data) => {
+//     if (err) {
+//       callback(err, null)
+//     } else {
+//       callback(null, data)
+//     }
+//   })
+// }
+
+// POSTGRES GET ALL
+var getProducts = (cb) => {
+  let query = `
+  SELECT *
+  FROM products
+  `;
+
+  pool.query(query, (err, res) => {
+    cb(err, res.rows)
   })
 }
 
@@ -117,9 +148,9 @@ var getProducts = (callback) => {
 //     console.log(data)
 //   }
 // })
-
+module.exports.pool = pool
 module.exports.getProducts = getProducts
-module.exports.getProduct = getProduct
+//module.exports.getProduct = getProduct
 module.exports.updateOne = updateOne
 module.exports.removeOne = removeOne
 
