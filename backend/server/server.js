@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')
 const path = require('path')
 
 const app = express()
-//const db = require('../database/config.js')
+const db = require('../database/config.js')
 
 app.use(cors())
 app.use(morgan('dev'))
@@ -27,6 +27,25 @@ app.get('/products', (req, res) => {
       res.json(data)
     }
   })
+})
+//wrote this as a get one based on the id passed in
+app.get('/:productId', (req, res) => {
+  db.getProduct(req.params.productId)
+    .then((product) => {
+      res.send(product)
+    })
+})
+//wrote this for an update, probably not correct yet
+app.post('/:productId', (req, res) => {
+  var id = req.params.productId
+  let field = req.body.field
+  let newInfo = req.body.data
+  db.updateOne(id, field, newInfo)
+    .then(res.end())
+})
+//should remove the product from the database
+app.delete('/:productId', (req, res) => {
+  db.removeOne(req.params.productId);
 })
 
 const PORT = process.env.PORT || 3001

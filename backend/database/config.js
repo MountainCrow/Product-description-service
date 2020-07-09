@@ -63,6 +63,21 @@ let build = (data, callback) => {
   })
 }
 
+var getProduct = (id) => {
+  var product = Product.find({productId: id}).lean()
+  return product;
+}
+
+var updateOne = (id, field, newInfo) => {
+  var product = Product.findById(id);
+  product.field = newInfo
+  doc.save()
+}
+
+var removeOne = (id) => {
+  var product = Product.findByIdAndRemove(id);
+}
+
 var getProducts = (callback) => {
 
   const productType = ['backpack', 'jacket', 'tent']
@@ -104,4 +119,7 @@ var getProducts = (callback) => {
 // })
 
 module.exports.getProducts = getProducts
+module.exports.getProduct = getProduct
+module.exports.updateOne = updateOne
+module.exports.removeOne = removeOne
 
