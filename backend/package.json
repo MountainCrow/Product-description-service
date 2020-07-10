@@ -24,6 +24,8 @@
     "nodemon": "^2.0.4"
   },
   "dependencies": {
+    "csv-generate": "^3.2.4",
+    "csv-writer": "^1.6.0",
     "pg": "^8.3.0"
   }
 }

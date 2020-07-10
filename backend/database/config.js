@@ -3,7 +3,6 @@ mongoose.connect('mongodb://localhost:27017/fjall_raven', {useNewUrlParser: true
 const sample = require('./sample_data.js')
 
 const { Pool, Client } = require('pg')
-const conString = "postgres://lisamodin:clippy@localhost:5432/fjall_crow";
 
 
 const pool = new Pool({
@@ -20,6 +19,64 @@ pool.connect()
   .catch((e) => {
     console.log('error: ', e)
   })
+
+//MONGOOSE update one
+var updateOne = (id, field, newInfo) => {
+  var product = Product.findById(id);
+  product.field = newInfo
+  doc.save()
+}
+//MONGOOSE DELETE
+var removeOne = (id) => {
+  var product = Product.findByIdAndRemove(id);
+}
+
+// POSTGRES GET ALL
+var getProducts = (cb) => {
+  let query = `
+  SELECT *
+  FROM products
+  `;
+  pool.query(query, (err, res) => {
+    cb(err, res.rows)
+  })
+}
+//POSTGRES GET BY ID
+var getProductid = (id, cb) => {
+  console.log('Got a get for id: ', id)
+  let query = `
+  SELECT *
+  FROM products
+  WHERE product_id = '${id}'
+  `;
+  pool.query(query, (err, res) => {
+    if (err) {console.log('err, ', err)}
+    else {
+      console.log('Got back: ', res.rows)
+      cb(err, res.rows)
+    }
+  })
+}
+//POSTGRES GET BY NAME
+var getProductname = (name, cb) => {
+  console.log('Got a get for name: ', name)
+  let query = `
+  SELECT *
+  FROM products
+  WHERE name = '${name}'
+  `;
+  pool.query(query, (err, res) => {
+    if (err) {console.log('err, ', err)}
+    else {
+      //console.log('Got back: ', res.rows)
+      cb(err, res.rows)
+    }
+  })
+}
+
+
+//--------------------------------------------------------
+//MONGOOSE INITIALIZATION
 // const db = mongoose.connection;
 // db.on('error', console.error.bind(console, 'connection error:'))
 // db.once('open', function() {
@@ -27,75 +84,58 @@ pool.connect()
 //   console.log('Database is running...')
 // })
 
-let productSchema = new mongoose.Schema({
-  productId: Number,
-  name: String,
-  type: String,
-  description: String,
-  rating: Number,
-  totalRatings: Number,
-  price: Number,
-  gender: String,
-  style: String,
-  size: [String],
-  color: String,
-  image: [String]
-})
+// let productSchema = new mongoose.Schema({
+//   productId: Number,
+//   name: String,
+//   type: String,
+//   description: String,
+//   rating: Number,
+//   totalRatings: Number,
+//   price: Number,
+//   gender: String,
+//   style: String,
+//   size: [String],
+//   color: String,
+//   image: [String]
+// })
 
-let Product = mongoose.model("Product", productSchema)
+// let Product = mongoose.model("Product", productSchema)
 
 //--------------------------------------------------------------------
 //Populates database with mock data
 //NOTE: Original image links will not be accessible and new images will need to be sourced
-let build = (data, callback) => {
-  console.log(data[0].name)
-  var collection = []
-  var count = 1
-  data.forEach(function(data) {
+// let build = (data, callback) => {
+//   console.log(data[0].name)
+//   var collection = []
+//   var count = 1
+//   data.forEach(function(data) {
 
-    var newProduct = new Product({
-      productId: count,
-      name: data.name,
-      type: data.type,
-      price: data.price,
-      description: data.description,
-      rating: data.userRating,
-      totalRatings: data.totalRatings,
-      gender: data.gender,
-      style: data.style,
-      size: data.size,
-      color: data.color,
-      image: data.url
-    })
-    count = count + 1;
-    collection.push(newProduct);
-  })
+//     var newProduct = new Product({
+//       productId: count,
+//       name: data.name,
+//       type: data.type,
+//       price: data.price,
+//       description: data.description,
+//       rating: data.userRating,
+//       totalRatings: data.totalRatings,
+//       gender: data.gender,
+//       style: data.style,
+//       size: data.size,
+//       color: data.color,
+//       image: data.url
+//     })
+//     count = count + 1;
+//     collection.push(newProduct);
+//   })
 
-  Product.insertMany(collection)
-  .then((res) => {
-    callback(null, res)
-  })
-  .catch((err) => {
-    callback(err, null)
-  })
-}
-//  MONGOOSE GET ONE
-// var getProduct = (id) => {
-//   var product = Product.find({productId: id}).lean()
-//   return product;
+//   Product.insertMany(collection)
+//   .then((res) => {
+//     callback(null, res)
+//   })
+//   .catch((err) => {
+//     callback(err, null)
+//   })
 // }
-
-
-var updateOne = (id, field, newInfo) => {
-  var product = Product.findById(id);
-  product.field = newInfo
-  doc.save()
-}
-
-var removeOne = (id) => {
-  var product = Product.findByIdAndRemove(id);
-}
-
 
 // MONGOOSE GET ALL WITH RANDOM GENERATION
 // var getProducts = (callback) => {
@@ -128,18 +168,6 @@ var removeOne = (id) => {
 //   })
 // }
 
-// POSTGRES GET ALL
-var getProducts = (cb) => {
-  let query = `
-  SELECT *
-  FROM products
-  `;
-
-  pool.query(query, (err, res) => {
-    cb(err, res.rows)
-  })
-}
-
 // uncomment in order to populate db with mock data
 // build(sample.data, (err, data) => {
 //   if (err) {
@@ -150,7 +178,8 @@ var getProducts = (cb) => {
 // })
 module.exports.pool = pool
 module.exports.getProducts = getProducts
-//module.exports.getProduct = getProduct
+module.exports.getProductid = getProductid
+module.exports.getProductname = getProductname
 module.exports.updateOne = updateOne
 module.exports.removeOne = removeOne
 
