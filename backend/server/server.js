@@ -70,8 +70,12 @@ app.post('/:productId', (req, res) => {
     .then(res.end())
 })
 //should remove the product from the database
-app.delete('/:productId', (req, res) => {
-  db.removeOne(req.params.productId);
+app.delete('/remove', (req, res) => {
+  db.deleteAll((err, data) => {
+    if (err) {console.log('error: ', err)}
+    console.log('deleted: ', data)
+    res.end();
+  });
 })
 
 const PORT = process.env.PORT || 3001

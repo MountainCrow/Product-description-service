@@ -36,8 +36,8 @@ let productIdCount = 1;
 let productId = 'bp' + productIdCount + 'fc';
 
 let style = 'style # 123'
-let names = ['KEB DOME', 'RAVEN 28', 'STINA JACKET W', 'GREENLAND DOWN LINER JACKET'];
-let getName = () => {return names[Math.floor(Math.random() * 4)]};
+let names = ['KEB DOME', 'RAVEN 28', 'STINA JACKET W', 'GREENLAND DOWN LINER JACKET', 'ASDF', 'ABCD', 'CDBA', 'ASDGEAE AD', 'SOMETHING', 'ANOTHER THING', 'ABESXFLKJ', 'ONE MORE'];
+let getName = () => {return names[Math.floor(Math.random() * 12)]};
 
 let images = "{https://picsum.photos/500,https://picsum.photos/200/450}";
 
@@ -65,7 +65,7 @@ let colors = ['215 - Autumn Leaf','662 - Deep Forest', '031 - Graphite']
 let getColor = () => {return colors[Math.floor(Math.random() * 3)]}
 
 let createFile = () => {
-  while(productIdCount < 50) {
+  while(productIdCount < 50000) {
     let record  = {};
     record.color = getColor();
     record.description = getDescription();

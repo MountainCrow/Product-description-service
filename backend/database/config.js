@@ -33,16 +33,19 @@ var removeOne = (id) => {
 
 // POSTGRES GET ALL
 var getProducts = (cb) => {
+  //gets all, with a limit of 15
   let query = `
   SELECT *
   FROM products
   `;
+  //LIMIT 15
   pool.query(query, (err, res) => {
     cb(err, res.rows)
   })
 }
 //POSTGRES GET BY ID
 var getProductid = (id, cb) => {
+  //queries all with a specific ID (should return only 1)
   console.log('Got a get for id: ', id)
   let query = `
   SELECT *
@@ -59,11 +62,13 @@ var getProductid = (id, cb) => {
 }
 //POSTGRES GET BY NAME
 var getProductname = (name, cb) => {
+  //queries all with a specific name (should return many, limit to 15)
   console.log('Got a get for name: ', name)
   let query = `
   SELECT *
   FROM products
   WHERE name = '${name}'
+  LIMIT 15
   `;
   pool.query(query, (err, res) => {
     if (err) {console.log('err, ', err)}
@@ -74,6 +79,17 @@ var getProductname = (name, cb) => {
   })
 }
 
+var deleteAll = (cb) => {
+  let query = `
+  DELETE FROM products
+  `
+  pool.query(query, (err, res) => {
+    if (err) {console.log('err, ', err)}
+    else {
+      cb(res)
+    }
+  })
+}
 
 //--------------------------------------------------------
 //MONGOOSE INITIALIZATION
@@ -182,4 +198,4 @@ module.exports.getProductid = getProductid
 module.exports.getProductname = getProductname
 module.exports.updateOne = updateOne
 module.exports.removeOne = removeOne
-
+module.exports.deleteAll = deleteAll
