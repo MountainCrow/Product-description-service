@@ -6,6 +6,7 @@ const path = require('path')
 
 const app = express()
 const db = require('../database/config.js')
+const dataa = require('../data-loader/generate.js')
 
 app.use(cors())
 app.use(morgan('dev'))
@@ -22,20 +23,43 @@ const corsOptions = {
 app.get('/products', (req, res) => {
   db.getProducts((err, data) => {
     if (err) {
-      console.log('server had error')
+      //console.log('server had error')
       res.end()
     } else {
-      console.log('server got: ', data)
+      //console.log('server got: ', data)
       res.send(data)
     }
   })
 })
 //wrote this as a get one based on the id passed in
-app.get('/:productId', (req, res) => {
-  db.getProduct(req.params.productId)
-    .then((product) => {
-      res.send(product)
-    })
+app.get('/name/:productName', (req, res) => {
+  let name = req.params.productName.split('_');
+  name = name.join(' ').toUpperCase();
+  console.log('name of product: ', name)
+  db.getProductname(name, (err, data) => {
+    if (err) {
+      //console.log('server had error')
+      res.end()
+    } else {
+      //console.log('server got: ', data)
+      res.send(data)
+    }
+  })
+    // .then((product) => {
+    //   res.send(product)
+    // })
+})
+//Get based on productID
+app.get('/id/:productId', (req, res) => {
+  db.getProductid(req.params.productId, (err, data) => {
+    if (err) {
+      //console.log('server had error')
+      res.end()
+    } else {
+      //console.log('server got: ', data)
+      res.send(data)
+    }
+  })
 })
 //wrote this for an update, probably not correct yet
 app.post('/:productId', (req, res) => {

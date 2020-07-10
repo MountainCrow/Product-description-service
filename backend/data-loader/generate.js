@@ -1,19 +1,24 @@
+const createCsvWriter = require('csv-writer').createObjectCsvWriter;
+const data = require('./data.js')
+const csvWriter = createCsvWriter({
+  path: 'data.csv',
+  fieldDelimiter: ';',
+  header: [
+    {id: 'color' , title: 'color' },
+    {id: 'description' , title: 'description' },
+    {id: 'gender' , title: 'gender' },
+    {id: 'image' , title: 'image' },
+    {id: 'name' , title: 'name' },
+    {id: 'price' , title: 'price' },
+    {id: 'rating' , title: 'rating' },
+    {id: 'size' , title: 'size' },
+    {id: 'style' , title: 'style' },
+    {id: 'total_ratings' , title: 'total_ratings' },
+    {id: 'type' , title: 'type' },
+    {id: 'product_id' , title: 'product_id' },
+  ]
+});
 
-
-//write a script that will create random data for the table
-  //columns we need:
-  //color - string, ideally includes a three digit number to later translate it
-  //description -- string, just a sentence long
-  //gender == string: male, female, unisex
-  //image --string (url)
-  //name -- string
-  //price -- numeric (should have two decimal places)
-  //rating -- number 1-5
-  //size -- string
-  //style -- string
-  // totalRatings -- number from 0 to something big
-  //type -- string
-  //productId -- string, unique based on the product itself
-    //will eventually be used to load the data as the url
-//find a way to save the output in a csv format
-
+// csvWriter
+//   .writeRecords(data.data)
+//   .then(() => console.log('File generated!'))

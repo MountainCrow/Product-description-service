@@ -53,7 +53,7 @@ var StarRating = (props) => {
           }
         })}
       </StyledLabel>
-      <StyledTotal className="total-ratings">({props.data.totalRatings})</StyledTotal>
+      <StyledTotal className="total-ratings">({props.data.total_ratings})</StyledTotal>
     </Wrapper>
   )
 }
