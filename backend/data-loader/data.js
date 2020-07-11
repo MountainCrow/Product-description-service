@@ -28,11 +28,11 @@ let data = [
     style: 'style # 123',
     total_ratings: 52345,
     type: 'backpack',
-    product_id: 'bp1000000fc'
+    product_id: 'bp9000000fc'
   }
 ];
 
-let productIdCount = 1000001;
+let productIdCount = 9000001;
 let productId = 'bp' + productIdCount + 'fc';
 
 let style = 'style # 123'
@@ -67,7 +67,7 @@ let colors = ['215 - Autumn Leaf','662 - Deep Forest', '031 - Graphite']
 let getColor = () => {return colors[Math.floor(Math.random() * 3)]}
 
 let createFile = () => {
-  while(productIdCount < 2000000) {
+  while(productIdCount < 10000001) {
     let record  = {};
     record.color = getColor();
     record.description = getDescription();
