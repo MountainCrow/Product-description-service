@@ -33,7 +33,7 @@ class App extends React.Component {
   componentDidMount() {
     axios.get('http://localhost:3001/name/keb_dome')
     .then(data => {
-      console.log("GET: ", data)
+      //console.log("GET: ", data)
       this.setState({
         isLoaded: true, //needed for conditional rendering
         products: data.data, //an array for randomly generated products
@@ -44,7 +44,7 @@ class App extends React.Component {
   }
   //click handler for the color buttons which sets the currentProduct state to the selected product
   getCurrentProduct(product) {
-    console.log(product)
+    //console.log(product)
     this.setState({
       currentProduct: product
     })

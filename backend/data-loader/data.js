@@ -28,15 +28,17 @@ let data = [
     style: 'style # 123',
     total_ratings: 52345,
     type: 'backpack',
-    product_id: 'bp0fc'
+    product_id: 'bp1000000fc'
   }
 ];
 
-let productIdCount = 1;
+let productIdCount = 1000001;
 let productId = 'bp' + productIdCount + 'fc';
 
 let style = 'style # 123'
 let names = ['KEB DOME', 'RAVEN 28', 'STINA JACKET W', 'GREENLAND DOWN LINER JACKET', 'ASDF', 'ABCD', 'CDBA', 'ASDGEAE AD', 'SOMETHING', 'ANOTHER THING', 'ABESXFLKJ', 'ONE MORE'];
+
+//faker.commerce.productName
 let getName = () => {return names[Math.floor(Math.random() * 12)]};
 
 let images = "{https://picsum.photos/500,https://picsum.photos/200/450}";
@@ -65,7 +67,7 @@ let colors = ['215 - Autumn Leaf','662 - Deep Forest', '031 - Graphite']
 let getColor = () => {return colors[Math.floor(Math.random() * 3)]}
 
 let createFile = () => {
-  while(productIdCount < 50000) {
+  while(productIdCount < 2000000) {
     let record  = {};
     record.color = getColor();
     record.description = getDescription();
@@ -84,6 +86,6 @@ let createFile = () => {
   }
 }
 
-createFile();
+//createFile();
 
 module.exports.data = data;

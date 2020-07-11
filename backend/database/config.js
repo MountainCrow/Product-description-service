@@ -37,8 +37,8 @@ var getProducts = (cb) => {
   let query = `
   SELECT *
   FROM products
+  LIMIT 15
   `;
-  //LIMIT 15
   pool.query(query, (err, res) => {
     cb(err, res.rows)
   })
@@ -79,6 +79,7 @@ var getProductname = (name, cb) => {
   })
 }
 
+//CLEAR all from table products. Does not delete table itself, just all entries
 var deleteAll = (cb) => {
   let query = `
   DELETE FROM products
