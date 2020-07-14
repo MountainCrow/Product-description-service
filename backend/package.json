@@ -27,9 +27,12 @@
     "supertest": "^4.0.2"
   },
   "dependencies": {
+    "artillery": "^1.6.1",
     "csv-generate": "^3.2.4",
     "csv-writer": "^1.6.0",
+    "dotenv": "^8.2.0",
     "faker": "^4.1.0",
+    "newrelic": "^6.11.0",
     "pg": "^8.3.0"
   }
 }

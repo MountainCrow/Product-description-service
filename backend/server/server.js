@@ -1,3 +1,4 @@
+require('newrelic')
 const express = require('express')
 const cors = require('cors')
 const morgan = require('morgan')
@@ -5,10 +6,13 @@ const bodyParser = require('body-parser')
 const path = require('path')
 
 const app = express()
-//connect to postgres
+
+//connect to POSTGRES
 const db = require('../database/config-update.js')
-//connect to mongo
+//=========================
+//connect to MONGODB
 //const db = require('../database/config-mg.js')
+//==========================
 // this line connects this file to the data generator and runs the create data/csv writer functions. Uncomment to generate more data
 //const dataa = require('../data-loader/generate.js')
 
@@ -19,8 +23,10 @@ app.use(bodyParser.urlencoded({extended: true}))
 
 app.use(express.static(path.join(__dirname, '../../client/dist')))
 
+const PORT = process.env.PORT || 3001
+
 const corsOptions = {
-  origin: 'http://localhost/3001',
+  origin: `http://localhost/${PORT}`,
   optionSuccessStatus: 200
 }
 //calls getProducts function which will query the database
@@ -45,13 +51,10 @@ app.get('/name/:productName', (req, res) => {
       //console.log('server had error')
       res.end()
     } else {
-      console.log('server got: ', data.length)
+      //console.log('server got: ', data.length)
       res.send(data)
     }
   })
-    // .then((product) => {
-    //   res.send(product)
-    // })
 })
 //Get based on productID
 app.get('/id/:productId', (req, res) => {
@@ -87,8 +90,6 @@ app.delete('/remove', (req, res) => {
 app.get('/test', (req, res) => {
   res.json({message: 'pass!'})
 })
-
-const PORT = process.env.PORT || 3001
 
 app.listen(PORT, () => {
   console.log(`Server is running on PORT: ${PORT}`)
