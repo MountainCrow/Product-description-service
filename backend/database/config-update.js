@@ -32,7 +32,7 @@ var getProducts = (cb) => {
   let query = `
   SELECT *
   FROM products
-  WHERE identifier BETWEEN '9900000' AND '10000000'
+  LIMIT 30
   `;
   pool.query(query, (err, res) => {
     //console.log('Got back ', res.rows.length, ' rows')
@@ -64,7 +64,6 @@ var getProductname = (name, cb) => {
   SELECT *
   FROM products
   WHERE name = '${name}'
-  AND identifier >= '9000000'
   LIMIT 30
   `;
   pool.query(query, (err, res) => {

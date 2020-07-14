@@ -84,6 +84,10 @@ app.delete('/remove', (req, res) => {
   });
 })
 
+app.get('/test', (req, res) => {
+  res.json({message: 'pass!'})
+})
+
 const PORT = process.env.PORT || 3001
 
 app.listen(PORT, () => {
