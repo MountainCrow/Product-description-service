@@ -1,3 +1,4 @@
+const faker = require('faker');
 //write a script that will create random data for the table
   //columns we need:
     //color - string, ideally includes a three digit number to later translate it
@@ -17,31 +18,32 @@
 
 let data = [
   {
-    color: '215 - Autumn Leaf',
-    description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut nec urna et arcu imperdiet ullamcorper. Duis at",
-    gender: 'unisex',
-    image: "{https://picsum.photos/500,https://picsum.photos/200/450}",
-    name: 'KEB DOME',
-    price: 200,
-    rating: 4,
-    size: "{One Size}",
-    style: 'style # 123',
-    total_ratings: 52345,
-    type: 'backpack',
-    product_id: 'bp9000000fc'
+    color: '215 - Autumn Leaf',// text
+    description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut nec urna et arcu imperdiet ullamcorper. Duis at", // text
+    gender: 'unisex',  // text
+    image: ["https://picsum.photos/500","https://picsum.photos/400/450"],//text[]
+    name: 'KEB DOME', // text
+    price: 200, //numeric
+    rating: 4, //string
+    size: ["One Size"], //text[]
+    style: 'style # 123', // text
+    total_ratings: 52345,// integer
+    type: 'backpack',// text
+    product_id: 'bp3649000fc',// text
+    identifier: 3649000//integer
   }
 ];
 
-let productIdCount = 9000001;
+let productIdCount = 3649001;
 let productId = 'bp' + productIdCount + 'fc';
 
 let style = 'style # 123'
-let names = ['KEB DOME', 'RAVEN 28', 'STINA JACKET W', 'GREENLAND DOWN LINER JACKET', 'ASDF', 'ABCD', 'CDBA', 'ASDGEAE AD', 'SOMETHING', 'ANOTHER THING', 'ABESXFLKJ', 'ONE MORE'];
+let names = require('./names.js');
 
 //faker.commerce.productName
-let getName = () => {return names[Math.floor(Math.random() * 12)]};
+let getName = () => {return names.names[Math.floor(Math.random() * 800000)]};
 
-let images = "{https://picsum.photos/500,https://picsum.photos/200/450}";
+let images = ["https://picsum.photos/500","https://picsum.photos/400/450"];
 
 let genders = ['female', 'male', 'unisex'];
 let getGender = () => {return genders[Math.floor(Math.random() * 3)]};
@@ -52,8 +54,8 @@ let rating = () => {return (Math.min((Math.random() * 6), 5)).toFixed(1)};
 let totalRatings = () => {return Math.floor(Math.random() * 1000)};
 
 let sizes = [
-  "{Small,Medium,Large,X-Large}",
-  "{One Size}"
+  ["Small","Medium","Large","X-Large"],
+  ["One Size"]
 ];
 let getSize = () => {return sizes[Math.floor(Math.random() * 2)]};
 
@@ -67,7 +69,7 @@ let colors = ['215 - Autumn Leaf','662 - Deep Forest', '031 - Graphite']
 let getColor = () => {return colors[Math.floor(Math.random() * 3)]}
 
 let createFile = () => {
-  while(productIdCount < 10000001) {
+  while(productIdCount < 5000000) {
     let record  = {};
     record.color = getColor();
     record.description = getDescription();
@@ -75,17 +77,18 @@ let createFile = () => {
     record.image = images;
     record.name = getName();
     record.price = price;
+    record.rating = rating();
     record.size = getSize();
     record.style = style;
-    record.rating = rating();
     record.total_ratings = totalRatings();
     record.type = getType();
     record.product_id = 'bp' + productIdCount + 'fc';
+    record.identifier = productIdCount;
     data.push(record);
     productIdCount++;
   }
 }
 
-//createFile();
+createFile();
 
 module.exports.data = data;
