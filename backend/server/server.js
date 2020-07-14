@@ -6,7 +6,7 @@ const path = require('path')
 
 const app = express()
 //connect to postgres
-const db = require('../database/config-pg.js')
+const db = require('../database/config-update.js')
 //connect to mongo
 //const db = require('../database/config-mg.js')
 // this line connects this file to the data generator and runs the create data/csv writer functions. Uncomment to generate more data
