@@ -1,11 +1,12 @@
 const { Pool, Client } = require('pg')
+require('dotenv').config()
 
 const pool = new Pool({
-  user:'postgres',
-  password:'clippy',
-  host:'localhost',
-  port:'5432',
-  database:'fjall_crow'
+  user: process.env.PG_user,
+  password: process.env.PG_password,
+  host: process.env.PG_host,
+  port: process.env.PG_port,
+  database: process.env.PG_database
 })
 pool.connect()
   .then(() => {
@@ -59,7 +60,7 @@ var getProductid = (id, cb) => {
 //POSTGRES GET BY NAME
 var getProductname = (name, cb) => {
   //queries all with a specific name (should return many, limit to 15)
-  console.log('Got a get for name: ', name)
+  //console.log('Got a get for name: ', name)
   let query = `
   SELECT *
   FROM products
