@@ -60,7 +60,7 @@ var getProductid = (id, cb) => {
 //POSTGRES GET BY NAME
 var getProductname = (name, cb) => {
   //queries all with a specific name (should return many, limit to 15)
-  console.log('Got a get for name: ', name)
+  //console.log('Got a get for name: ', name)
   let query = `
   SELECT *
   FROM products

@@ -45,7 +45,7 @@ app.get('/products', (req, res) => {
 app.get('/name/:productName', (req, res) => {
   let name = req.params.productName.split('_');
   name = name.join(' ');
-  console.log('name of product: ', name)
+  //console.log('name of product: ', name)
   db.getProductname(name, (err, data) => {
     if (err) {
       //console.log('server had error')
