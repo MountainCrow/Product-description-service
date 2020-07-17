@@ -31,7 +31,7 @@ class App extends React.Component {
   }
   //Sets the state using data which is randomly generated on the server
   componentDidMount() {
-    axios.get('52.53.246.116/name/Tasty_Steel_Ball')
+    axios.get('52.53.246.116:3001/name/Tasty_Steel_Ball')
     .then(data => {
       console.log("GET: ", data)
       this.setState({
