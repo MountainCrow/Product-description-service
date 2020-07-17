@@ -31,9 +31,9 @@ class App extends React.Component {
   }
   //Sets the state using data which is randomly generated on the server
   componentDidMount() {
-    axios.get('http://localhost:3001/name/Tasty_Steel_Ball')
+    axios.get('52.53.246.116/name/Tasty_Steel_Ball')
     .then(data => {
-      //console.log("GET: ", data)
+      console.log("GET: ", data)
       this.setState({
         isLoaded: true, //needed for conditional rendering
         products: data.data, //an array for randomly generated products
