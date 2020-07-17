@@ -4,7 +4,7 @@ require('dotenv').config()
 const pool = new Pool({
   user: process.env.PG_user,
   password: process.env.PG_password,
-  host: process.env.PG_host,
+  host: 'ec2-54-183-209-77.us-west-1.compute.amazonaws.com',  //process.env.PG_host,
   port: process.env.PG_port,
   database: process.env.PG_database
 })
