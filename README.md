@@ -1,30 +1,25 @@
-# Project Name
+# MountainCrow
 
-> Project description
+MountainCrow is a full stack application that displays various products with their details, descriptions, and reviews. The goal of the application was to focus on deployment and scalability. Each component of the application was separately scaled and load-balanced using AWS EC2 instances and NGINX.
+
+This repository particularly focuses on the product description module of the MountainCrow application. This module was able to scale up to handle 2,000 requests per second to a database containing 10 million products with 63ms latency and no errors.
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/MountainCrow/product_details
+  - https://github.com/MountainCrow/Product-description-service
+  - https://github.com/MountainCrow/reviews-proxy
 
 ## Table of Contents
 
-1. [Usage](#Usage)
 1. [Requirements](#requirements)
 1. [Development](#development)
 
-## Usage
-
-> Some usage instructions
 
 ## Requirements
 
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
-
-- Node 6.13.0
-- etc
+Node 6.13.0
+Nodemon
 
 ## Development
 
@@ -35,5 +30,7 @@ From within the root directory:
 ```sh
 npm install -g webpack
 npm install
+npm run react-dev
+npm start
 ```
 
